@@ -1,0 +1,16 @@
+.form-card {
+  border: 2px solid black;
+  display: inline-block;
+  margin: 6vh auto 0;
+  border-radius: 10px;
+  padding: 10px 4vw;
+  height: 45vh;
+  position: relative;
+}
+
+.form-heading {
+  margin-top: 3vh;
+}
+
+.process-btn {
+}
