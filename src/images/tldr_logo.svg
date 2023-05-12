@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 138.13">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .1em;
+      }
+
+      .cls-2 {
+        letter-spacing: .1em;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #f2f2f3;
+      }
+
+      .cls-5, .cls-6 {
+        fill: #1c2120;
+      }
+
+      .cls-4 {
+        font-family: Montserrat-Bold, Montserrat;
+        font-size: 51px;
+        font-weight: 700;
+      }
+
+      .cls-7 {
+        letter-spacing: .29em;
+      }
+
+      .cls-8 {
+        letter-spacing: .32em;
+      }
+
+      .cls-9 {
+        letter-spacing: .12em;
+      }
+
+      .cls-6 {
+        font-family: Montserrat-Medium, Montserrat;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .cls-10 {
+        letter-spacing: .28em;
+      }
+
+      .cls-11 {
+        letter-spacing: .3em;
+      }
+
+      .cls-12 {
+        letter-spacing: .3em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-5" x="1" y="1" width="282" height="92"/>
+      <path class="cls-3" d="m282,2v90H2V2h280m2-2H0v94h284V0h0Z"/>
+    </g>
+    <text class="cls-4" transform="translate(51.22 67.16)"><tspan class="cls-2" x="0" y="0">T</tspan><tspan class="cls-9" x="36.57" y="0">L</tspan><tspan class="cls-1" x="73.44" y="0">:DR</tspan></text>
+    <g>
+      <rect class="cls-3" x="1" y="105.13" width="282" height="32"/>
+      <path class="cls-3" d="m282,106.13v30H2v-30h280m2-2H0v34h284v-34h0Z"/>
+    </g>
+    <text class="cls-6" transform="translate(14.15 125.61)"><tspan class="cls-7" x="0" y="0">T</tspan><tspan class="cls-11" x="11.36" y="0">OO </tspan><tspan class="cls-10" x="48.28" y="0">L</tspan><tspan class="cls-11" x="59.7" y="0">ONG : DIDN</tspan><tspan class="cls-8" x="175.82" y="0">’</tspan><tspan class="cls-12" x="182.99" y="0">T READ</tspan></text>
+  </g>
+</svg>
