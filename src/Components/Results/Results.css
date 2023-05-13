@@ -1,0 +1,22 @@
+.results-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.list {
+  list-style-type: none;
+  text-align: start;
+}
+
+.list li {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.results-card {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
