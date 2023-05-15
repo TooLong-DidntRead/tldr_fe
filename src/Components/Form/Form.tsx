@@ -1,23 +1,31 @@
 import "./Form.css";
 import Button from "@mui/material/Button";
+import TextField from '@mui/material/TextField';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 const Form = () => {
   return (
-    <div className="form-card">
+    <form className="form-card">
       <h3 className="form-heading">
-        Paste TOS, Upload .pdf, or choose from a list of popular services
+        Paste, upload, or select your Terms of Service from a list of popular services.
       </h3>
-      <Button
-        variant="contained"
-        sx={{
-          position: "absolute",
-          bottom: "10px",
-          transform: "translate(-50%,-50%)",
-        }}
-      >
-        Process TOS
-      </Button>
-    </div>
+      <TextField
+          id="tos"
+          multiline
+          label="Enter TOS"
+          rows={8}
+        />
+      <div className="form-footer">
+        <Button color="primary" variant="contained" disableElevation startIcon={<CheckRoundedIcon />}>
+            Process
+        </Button>
+        <Button color="primary" variant="outlined" startIcon={<UploadFileIcon />}>
+            Upload
+            <input hidden accept="image/*" multiple type="file" />
+        </Button>
+      </div>
+    </form>
   );
 };
 

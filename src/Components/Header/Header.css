@@ -1,9 +1,22 @@
-.navbar {
-  background-color: #050505;
+header {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(60px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  width: 100%;
 }
 
 .logo-img {
-  width: 170px;
+  width: 120px;
   height: auto;
-  margin: 25px 40px;
+  border-radius: 4px;
+}
+
+.user-div {
+  display: flex;
+  gap: 0.5rem;
 }
