@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Form from "../Form/Form";
@@ -6,9 +6,15 @@ import Form from "../Form/Form";
 import processTOS from "../../apicalls";
 
 const App = () => {
-  console.log("anything")
+  const [error, setError] = useState('')
+  
+
+  const sendTOS = async () => {
+    const TOS = await processTOS('', [], setError);  
+  }
+
   useEffect(() => {
-    processTOS('', [])
+    sendTOS();
   }, []);
 
   return (
