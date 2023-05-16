@@ -3,19 +3,11 @@ import "./App.css";
 import Header from "../Header/Header";
 import Form from "../Form/Form";
 import Results from "../Results/Results";
-
-interface Concerns {
-  concerns: {
-    [index:string]: {
-      summary: string;
-      scheduleDate: string;
-    }
-  }
-}
+import { ConcernsShape } from "../../interfaces";
 
 const App = () => {
   const [error, setError] = useState("");
-  const [concerns, setConcerns] = useState<Concerns | null>(null);
+  const [concerns, setConcerns] = useState<ConcernsShape | null>(null);
 
   return (
     <div className="App">
@@ -25,7 +17,7 @@ const App = () => {
       ) : (
         <main className="main-content">
           {concerns ? 
-          <Results /> :
+          <Results concerns={concerns}/> :
           <>
             <h1 className="heading">Terms of Service Processor</h1>
             <p className="sub-heading">Understand what's important to you.</p>

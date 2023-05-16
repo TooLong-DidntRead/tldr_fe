@@ -5,18 +5,10 @@ import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import processTOS from "../../apicalls";
 import { Dispatch } from "react";
-
-interface Concerns {
-  concerns: {
-    [index: string]: {
-      summary: string;
-      scheduleDate: string;
-    };
-  };
-}
+import { ConcernsShape } from "../../interfaces";
 
 interface FormProps {
-  setConcerns: Dispatch<React.SetStateAction<Concerns | null>>;
+  setConcerns: Dispatch<React.SetStateAction<ConcernsShape | null>>;
   setError: Dispatch<React.SetStateAction<string>>;
 }
 

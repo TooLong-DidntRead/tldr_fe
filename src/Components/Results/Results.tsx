@@ -1,6 +1,13 @@
+import { ConcernsShape } from "../../interfaces";
 import "./Results.css";
 
-const Results = () => {
+
+
+interface ResultsProps {
+  concerns: ConcernsShape | null;
+}
+
+const Results = ({concerns}: ResultsProps) => {
   return (
     <div className="results-container">
       <div className="list-content">
