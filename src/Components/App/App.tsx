@@ -6,18 +6,23 @@ import Form from "../Form/Form";
 import processTOS from "../../apicalls";
 
 const App = () => {
+
   const [error, setError] = useState('')
-  const [concerns, setConcerns] = useState([])
+  const [concerns, setConcerns] = useState<object[]>([])
+  console.log(concerns)
+
+
   
-
-
-  const sendTOS = async () => {
-    const TOSinfo= await processTOS('', [], setError);
-    console.log(TOSinfo.data)
-    // setConcerns()
-  }
-
   useEffect(() => {
+    const sendTOS = async () => {
+      const TOSinfo = await processTOS('', [], setError);
+    
+      const keys:string[] = Object.keys(TOSinfo.data.concerns)
+      let concernsMap:object[] = keys.map((key:string) => {
+        return {key: TOSinfo.data.concerns[key]}
+      })
+      setConcerns(concernsMap);
+    }
     sendTOS();
   }, []);
 

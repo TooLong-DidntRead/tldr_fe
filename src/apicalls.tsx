@@ -1,11 +1,9 @@
   interface TOSReturn {
     data: {
-      concerns: {
-        payments: {
-          summary: string
-        },
-        privacy: {
-          summary: string
+      [concerns:string]: {
+        [index:string]: {
+          summary: string;
+          scheduleDate: string;
         }
       }
     }
