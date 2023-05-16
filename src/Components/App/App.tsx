@@ -7,10 +7,25 @@ import processTOS from "../../apicalls";
 
 const App = () => {
   const [error, setError] = useState('')
+  const [concerns, setConcerns] = useState([])
   
+  interface TOSReturn {
+    data: {
+      concerns: {
+        payments: {
+          summary: string
+        },
+        privacy: {
+          summary: string
+        }
+      }
+    }
+  }
 
   const sendTOS = async () => {
-    const TOS = await processTOS('', [], setError);  
+    const TOSinfo = await processTOS('', [], setError);
+    console.log(TOSinfo.data)
+    // setConcerns()
   }
 
   useEffect(() => {
@@ -20,12 +35,14 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <main className="main-content">
-        <h1 className="heading">Terms of Service Processor</h1>
-        <p className="sub-heading">Understand what's important to you.</p>
-        <Form />
-        {/* <Results /> */}
-      </main>
+      {error ? <h1>{error}</h1> :
+        <main className="main-content">
+          <h1 className="heading">Terms of Service Processor</h1>
+          <p className="sub-heading">Understand what's important to you.</p>
+          <Form />
+          {/* <Results /> */}
+        </main>
+      }
     </div>
   );
 };
