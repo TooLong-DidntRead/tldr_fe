@@ -16,7 +16,7 @@ const Form = ({ setConcerns, setError }: FormProps) => {
 
   const sendTOS = async () => {
     const TOSinfo = await processTOS("", [], setError);
-    setConcerns(TOSinfo.data);
+    setConcerns(TOSinfo.data.concerns);
   };
 
   return (

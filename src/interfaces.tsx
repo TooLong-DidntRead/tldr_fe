@@ -1,8 +1,13 @@
+interface OneConcern {
+  summary: string;
+  scheduleDate: string;
+}
+
 export interface ConcernsShape {
-  concerns: {
-    [index:string]: {
+
+    [key:string]: {
       summary: string;
       scheduleDate: string;
     }
-  }
+
 }
