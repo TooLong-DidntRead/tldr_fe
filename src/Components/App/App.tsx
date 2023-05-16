@@ -9,21 +9,10 @@ const App = () => {
   const [error, setError] = useState('')
   const [concerns, setConcerns] = useState([])
   
-  interface TOSReturn {
-    data: {
-      concerns: {
-        payments: {
-          summary: string
-        },
-        privacy: {
-          summary: string
-        }
-      }
-    }
-  }
+
 
   const sendTOS = async () => {
-    const TOSinfo = await processTOS('', [], setError);
+    const TOSinfo= await processTOS('', [], setError);
     console.log(TOSinfo.data)
     // setConcerns()
   }
