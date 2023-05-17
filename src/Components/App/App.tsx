@@ -1,9 +1,11 @@
 import  { useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import Form from "../Form/Form";
 import Results from "../Results/Results";
 import { ConcernsShape } from "../../interfaces";
+import Welcome from "../Welcome/Welcome";
 
 const App = () => {
   const [error, setError] = useState("");
@@ -16,6 +18,7 @@ const App = () => {
         <h1>{error}</h1>
       ) : (
         <main className="main-content">
+          <Welcome />
           {concerns ? 
           <Results concerns={concerns}/> :
           <>
@@ -25,6 +28,7 @@ const App = () => {
           </>}
         </main>
       )}
+      <Footer />
     </div>
   );
 };
