@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import Form from "../Form/Form";
 import Results from "../Results/Results";
 import { ConcernsShape } from "../../interfaces";
@@ -27,6 +28,7 @@ const App = () => {
           </>}
         </main>
       )}
+      <Footer />
     </div>
   );
 };
