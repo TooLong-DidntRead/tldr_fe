@@ -28,7 +28,7 @@ const Results = ({ concerns }: ResultsProps) => {
   const concernRows =
     keys &&
     keys.map((concern, i) => (
-      <ConcernRow key={i} id={i} title={concernFriendly[concern]} rating={10} selectConcern={selectConcern}/>
+      <ConcernRow key={i} id={i} title={concernFriendly[concern]} ranking={concerns[concern].ranking} selectConcern={selectConcern}/>
     ));
 
   return (
