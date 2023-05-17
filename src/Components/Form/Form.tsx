@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import processTOS from "../../apicalls";
-import { Dispatch } from "react";
+import { Dispatch, useState } from "react";
 import { ConcernsShape } from "../../interfaces";
 
 interface FormProps {
@@ -13,9 +13,10 @@ interface FormProps {
 }
 
 const Form = ({ setConcerns, setError }: FormProps) => {
+  const [tosInput, setTosInput] = useState("");
 
   const sendTOS = async () => {
-    const TOSinfo = await processTOS("", [], setError);
+    const TOSinfo = await processTOS(tosInput, [], setError);
     setConcerns(TOSinfo.data.concerns);
   };
 
@@ -25,7 +26,16 @@ const Form = ({ setConcerns, setError }: FormProps) => {
         Paste, upload, or select your Terms of Service from a list of popular
         services.
       </h3>
-      <TextField id="tos" multiline label="Enter TOS" rows={8} />
+      <TextField
+        value={tosInput}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          setTosInput(event.target.value);
+        }}
+        id="tos"
+        multiline
+        label="Enter TOS"
+        rows={8}
+      />
       <div className="form-footer">
         <Button
           onClick={sendTOS}
