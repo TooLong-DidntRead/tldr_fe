@@ -1,21 +1,14 @@
+import { ConcernsShape } from "./interfaces";
+
 interface TOSReturn {
   data: {
-    concerns: {
-      [index: string]: {
-        summary: string;
-        scheduleDate: string;
-      };
-    };
+    concerns: ConcernsShape
   };
 }
 
-const processTOS = async (
-  tos: string,
-  concerns: string[],
-  setError: Function
-): Promise<TOSReturn> => {
+const processTOS = async (tos: string, concerns: string[], setError: Function): Promise<TOSReturn> => {
   const response = await fetch(
-    "https://2b7e0d8f-078d-48c9-8682-f1652a24a00b.mock.pstmn.io/api/v1/processTOS",
+    "https://4196c33d-8951-4a3a-8216-bffd37431cc2.mock.pstmn.io/api/v1/processTOS",
     {
       method: "POST",
       headers: {
