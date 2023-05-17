@@ -7,17 +7,20 @@ import Avatar from "@mui/material/Avatar";
 const Login = () => {
   return (
     <div className="login-container">
-      <div className="avatar">
-        <Avatar alt="Travis Howard" src={Avatar1} />
-        <p>Travis Howard</p>
-      </div>
-      <div className="avatar">
-        <Avatar alt="Travis Howard" src={Avatar1} />
-        <p>Travis Howard</p>
-      </div>
-      <div className="avatar">
-        <Avatar alt="Travis Howard" src={Avatar1} />
-        <p>Travis Howard</p>
+      <h3 className="login-heading">Please Select A User</h3>
+      <div className="avatar-container">
+        <div className="avatar">
+          <Avatar alt="Travis Howard" src={Avatar1} />
+          <p>Travis Howard</p>
+        </div>
+        <div className="avatar">
+          <Avatar alt="Cindy Baker" src={Avatar2} />
+          <p>Cindy Baker</p>
+        </div>
+        <div className="avatar">
+          <Avatar alt="Remy Sharp" src={Avatar3} />
+          <p>Remy Sharp</p>
+        </div>
       </div>
     </div>
   );
