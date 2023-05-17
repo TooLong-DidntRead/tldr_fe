@@ -1,4 +1,5 @@
 import { ConcernsShape } from "../../interfaces";
+import ConcernRow from "./Concern/ConcernRow";
 import "./Results.css";
 
 
@@ -9,17 +10,18 @@ interface ResultsProps {
 const Results = ({concerns}: ResultsProps) => {
 
   const keys = concerns && Object.keys(concerns)
-  const lis = keys && keys.map((concern, i) => <li key={i}>{concern}</li>);
+  const concernRows = keys && keys.map((concern, i) => <ConcernRow key={i} title={concern} rating={10}/>);
 
   return (
-    <div className="results-container">
-      <div className="list-content">
-        <ul className="list">
-          {lis}
-        </ul>
-      </div>
-      <div className="results-card">
-        <h3 className="results-heading">{concerns && keys && concerns[keys[0]].summary}</h3>
+    <div className="results-page">
+      <h1 className="results-title">Your Results</h1>
+      <div className="results-lower">
+        <div className="concern-rows">
+          {concernRows}
+        </div>
+        <div className="results-card">
+          <h3 className="results-heading">{concerns && keys && concerns[keys[0]].summary}</h3>
+        </div>
       </div>
     </div>
   );

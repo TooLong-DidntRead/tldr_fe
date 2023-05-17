@@ -1,18 +1,27 @@
-.results-container {
+.results-page {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  width: 80%;
-  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
 }
 
-.list {
-  list-style-type: none;
-  text-align: start;
+.results-title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--blue);
 }
 
-.list li {
-  padding: 10px;
-  font-size: 18px;
+.results-lower {
+  display: flex;
+  gap: 2vw;
+}
+
+.concern-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .results-card {

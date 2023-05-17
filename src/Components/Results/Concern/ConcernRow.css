@@ -1,0 +1,18 @@
+.concern-row {
+  padding: 0.5rem;
+  width: 12rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 6px;
+}
+
+.concern-title {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
