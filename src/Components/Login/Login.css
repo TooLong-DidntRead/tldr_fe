@@ -1,0 +1,44 @@
+.login-container {
+  position: relative;
+  top: 20vh;
+  padding: 20px;
+  padding: 1rem 4.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 1px 3px, rgba(0, 0, 0, 0.44) 0px 1px 2px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.login-heading {
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem 0 0;
+}
+
+.avatar-container {
+  display: flex;
+  padding: 5rem;
+}
+
+.avatar {
+  margin: 0 20px;
+  text-align: center;
+}
+
+#avatar-img {
+  border: 5px solid #fff;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+
+#avatar-img:hover {
+  border: 5px solid #59c1bd;
+}
+
+.avatar-name {
+  margin: 5px 0 0;
+}

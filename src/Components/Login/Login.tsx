@@ -10,16 +10,16 @@ const Login = () => {
       <h3 className="login-heading">Please Select A User</h3>
       <div className="avatar-container">
         <div className="avatar">
-          <Avatar alt="Travis Howard" src={Avatar1} />
-          <p>Travis Howard</p>
+          <Avatar id="avatar-img" alt="Travis Howard" src={Avatar1} />
+          <p className="avatar-name">Travis Howard</p>
         </div>
         <div className="avatar">
-          <Avatar alt="Cindy Baker" src={Avatar2} />
-          <p>Cindy Baker</p>
+          <Avatar id="avatar-img" alt="Cindy Baker" src={Avatar2} />
+          <p className="avatar-name">Cindy Baker</p>
         </div>
         <div className="avatar">
-          <Avatar alt="Remy Sharp" src={Avatar3} />
-          <p>Remy Sharp</p>
+          <Avatar id="avatar-img" alt="Remy Sharp" src={Avatar3} />
+          <p className="avatar-name">Remy Sharp</p>
         </div>
       </div>
     </div>
