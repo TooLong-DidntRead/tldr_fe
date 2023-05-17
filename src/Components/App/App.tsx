@@ -12,19 +12,19 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       {error ? (
         <h1>{error}</h1>
       ) : (
         <main className="main-content">
           <Welcome />
-          {/* {concerns ? 
+          {concerns ? 
           <Results concerns={concerns}/> :
           <>
             <h1 className="heading">Terms of Service Processor</h1>
             <p className="sub-heading">Understand what's important to you.</p>
             <Form setConcerns={setConcerns} setError={setError}/>
-          </>} */}
+          </>}
         </main>
       )}
     </div>
