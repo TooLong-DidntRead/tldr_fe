@@ -6,6 +6,7 @@ import Form from "../Form/Form";
 import Results from "../Results/Results";
 import { ConcernsShape } from "../../interfaces";
 import Welcome from "../Welcome/Welcome";
+import { Route } from "react-router-dom";
 
 const App = () => {
   const [error, setError] = useState("");
@@ -13,6 +14,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Route path='/'></Route>
       <Header />
       {error ? (
         <h1>{error}</h1>
@@ -28,7 +30,7 @@ const App = () => {
           </>}
         </main>
       )}
-      <Footer />
+      <Footer />   
     </div>
   );
 };

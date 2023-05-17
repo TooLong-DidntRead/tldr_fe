@@ -22,6 +22,6 @@ const Welcome = () => {
       </div>
     </main>
   )
-}
+};
 
 export default Welcome;
