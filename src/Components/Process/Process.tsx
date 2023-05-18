@@ -8,6 +8,7 @@ import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import { tosLibrary } from "../../tosLibrary";
+import { CircularProgress } from "@mui/material";
 
 interface FormProps {
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
@@ -34,39 +35,53 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
     <main className="process-main">
       <h1 className="heading">Terms of Service Processor</h1>
       <p className="sub-heading">Understand what's important to you.</p>
+
       <form className="form-card">
-        <h3 className="form-heading">
-          Paste, upload, or select your Terms of Service from a list of popular
-          services.
-        </h3>
-        <TextField
-          value={tosInput}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setTosInput(event.target.value);
-          }}
-          id="tos"
-          multiline
-          rows={8}
-        />
-        <div className="form-footer">
-          <Button
-            onClick={sendTOS}
-            color="primary"
-            variant="contained"
-            disableElevation
-            startIcon={<CheckRoundedIcon />}
-          >
-            Process
-          </Button>
-          <Button
-            color="primary"
-            variant="outlined"
-            startIcon={<UploadFileIcon />}
-          >
-            Upload
-            <input hidden accept="image/*" multiple type="file" />
-          </Button>
-        </div>
+        {loading ? (
+          <>
+            <h3 className="form-heading">
+              Processing Terms of Service, Please Wait
+            </h3>
+            <div className="loading-parent">
+              <CircularProgress id="loading-icon"/>
+            </div>
+          </>
+        ) : (
+          <>
+            <h3 className="form-heading">
+              Paste, upload, or select your Terms of Service from a list of
+              popular services.
+            </h3>
+            <TextField
+              value={tosInput}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setTosInput(event.target.value);
+              }}
+              id="tos"
+              multiline
+              rows={8}
+            />
+            <div className="form-footer">
+              <Button
+                onClick={sendTOS}
+                color="primary"
+                variant="contained"
+                disableElevation
+                startIcon={<CheckRoundedIcon />}
+              >
+                Process
+              </Button>
+              <Button
+                color="primary"
+                variant="outlined"
+                startIcon={<UploadFileIcon />}
+              >
+                Upload
+                <input hidden accept="image/*" multiple type="file" />
+              </Button>
+            </div>
+          </>
+        )}
       </form>
     </main>
   );
