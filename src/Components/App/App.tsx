@@ -5,13 +5,13 @@ import Footer from "../Footer/Footer";
 import Form from "../Form/Form";
 import Login from "../Login/Login";
 import Results from "../Results/Results";
-import { ConcernsShape } from "../../interfaces";
+import { ConcernShape } from "../../interfaces";
 import Welcome from "../Welcome/Welcome";
 import { Route, Switch } from "react-router-dom";
 
 const App = () => {
   const [error, setError] = useState("");
-  const [concerns, setConcerns] = useState<ConcernsShape | null>(null);
+  const [concerns, setConcerns] = useState<ConcernShape[] | null>(null);
   const [user, setUser] = useState<number | null>(null);
 
   return (
@@ -28,7 +28,7 @@ const App = () => {
         </Route>
         <Route exact path="/form">
           <Header />
-          <Form setConcerns={setConcerns} setError={setError}/>
+          <Form setConcerns={setConcerns} setError={setError} user={user}/>
           <Footer />
         </Route>
         <Route exact path="/results">

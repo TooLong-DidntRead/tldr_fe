@@ -1,7 +1,9 @@
-export interface ConcernsShape {
-    [key:string]: {
-      ranking: number;
-      impact: string;
-      actionable: string;
+export interface ConcernShape {
+    response: {
+      [key:string]: {
+        ranking: number;
+        impact: string;
+        actionable: string;
+      }
     }
 }

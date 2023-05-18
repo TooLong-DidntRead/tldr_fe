@@ -1,3 +1,28 @@
+.main-content {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+.heading {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  color: var(--medium-black);
+  text-align: center;
+  color: var(--blue);
+}
+
+.sub-heading {
+  font-size: 1rem;
+  color: var(--medium-black);
+  opacity: 0.8;
+  text-align: center;
+}
+
 .form-card {
   display: flex;
   flex-direction: column;
