@@ -1,17 +1,18 @@
 .welcome-main {
+  color: var(--medium-black);
+  min-height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
-  color: var(--medium-black)
+  padding: 2rem;
 }
 
-.welcome-container {
+.welcome-card {
   display: flex;
+  max-width: 800px;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 6%;
-  width: 50vw;
-  height: 60vh;
   padding: 1.5rem;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.4);
@@ -29,27 +30,31 @@
   letter-spacing: .6rem;
 }
 
-.logo {
+.welcome-logo {
   width: 40%;
   height: auto;
   border-radius: 4px;
+  margin-bottom: 1rem;
 }
 
 .summary {
   text-align: center;
   font-weight: 400;
   padding: 1rem;
+  font-size: 1.2rem;
 }
 
 .instructions {
   font-weight: 600;
   color: var(--blue);
   padding: .5rem;
-
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .disclaimer {
   text-align: center;
   font-style: italic;
   font-size: .5rem;
+  margin-top: 1rem;
 }

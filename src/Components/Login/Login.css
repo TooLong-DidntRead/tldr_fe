@@ -1,8 +1,14 @@
-.login-container {
-  position: relative;
-  top: 20vh;
-  padding: 20px;
-  padding: 1rem 4.5rem;
+.login-main {
+  color: var(--medium-black);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-card {
+  padding: 3rem;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(50px);
@@ -14,17 +20,17 @@
 .login-heading {
   font-size: 2rem;
   text-align: center;
-  padding: 1rem 0 0;
+  margin-bottom: 3rem;
 }
 
 .avatar-container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
   justify-content: center;
-  padding: 5rem;
 }
 
 .avatar {
-  margin: 0 20px;
   text-align: center;
 }
 

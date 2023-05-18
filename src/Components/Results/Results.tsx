@@ -29,14 +29,14 @@ const Results = ({ concerns }: ResultsProps) => {
     });
 
   return (
-    <div className="results-page">
+    <main className="results-main">
       <h1 className="results-title">Your Results</h1>
       <div className="results-lower">
         <div className="concern-rows">{concernRows}</div>
         <div className="results-card">
           <div className="results-card-header">
             <h3>{concerns && selectedConcernKey}</h3>
-            <h4>Consumer Friendlyness Ranking: {concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].ranking}</h4>
+            <h4>Ranking: {concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].ranking}</h4>
           </div>
           <div className="results-card-section">
             <h4>How Does This Impact Me?</h4>
@@ -48,7 +48,7 @@ const Results = ({ concerns }: ResultsProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
