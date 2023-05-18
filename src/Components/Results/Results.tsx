@@ -21,14 +21,10 @@ const Results = ({ concerns }: ResultsProps) => {
 
   const keys = concerns && Object.keys(concerns);
 
-  const selectConcern = (id: number) => {
-    setSelectedConcern(id);
-  }
-
   const concernRows =
     keys &&
     keys.map((concern, i) => (
-      <ConcernRow key={i} id={i} title={concernFriendly[concern]} ranking={concerns[concern].ranking} selectConcern={selectConcern}/>
+      <ConcernRow key={i} id={i} title={concernFriendly[concern]} ranking={concerns[concern].ranking} selectConcern={setSelectedConcern}/>
     ));
 
   return (
