@@ -7,7 +7,7 @@ import processTOS from "../../apicalls";
 import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
-
+import { tosLibrary } from "../../tosLibrary";
 
 interface FormProps {
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
@@ -16,7 +16,7 @@ interface FormProps {
 }
 
 const Form = ({ setConcerns, setError, user }: FormProps) => {
-  const [tosInput, setTosInput] = useState("");
+  const [tosInput, setTosInput] = useState(tosLibrary[0].tos);
   const [loading, setLoading] = useState(false);
   console.log(loading);
 
@@ -46,7 +46,6 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
           }}
           id="tos"
           multiline
-          label="Enter TOS"
           rows={8}
         />
         <div className="form-footer">

@@ -7,7 +7,7 @@ import Login from "../Login/Login";
 import Results from "../Results/Results";
 import { ConcernShape } from "../../interfaces";
 import Welcome from "../Welcome/Welcome";
-import { Route, Switch, useHistory} from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 const App = () => {
   const [error, setError] = useState("");
@@ -19,8 +19,8 @@ const App = () => {
   const logout = () => {
     setUser(null);
     setConcerns(null);
-    history.push('/login');
-  }
+    history.push("/login");
+  };
 
   return (
     <div className="App">
@@ -35,12 +35,28 @@ const App = () => {
             <Login setUser={setUser} />
           </Route>
           <Route exact path="/process">
-            <Header logout={logout}/>
-            <Process setConcerns={setConcerns} setError={setError} user={user} />
+          {user ? (
+              <>
+            <Header logout={logout} user={user} />
+            <Process
+              setConcerns={setConcerns}
+              setError={setError}
+              user={user}
+            />
+              </>
+            ) : (
+              <Redirect to={'/login'}/>
+            )}
           </Route>
           <Route exact path="/results">
-            <Header logout={logout}/>
-            <Results concerns={concerns} />
+            {concerns ? (
+              <>
+                <Header logout={logout} user={user} />
+                <Results concerns={concerns} />
+              </>
+            ) : (
+              <Redirect to={'/process'}/>
+            )}
           </Route>
         </Switch>
       )}
