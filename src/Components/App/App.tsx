@@ -3,10 +3,11 @@ import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Form from "../Form/Form";
+import Login from "../Login/Login";
 import Results from "../Results/Results";
 import { ConcernsShape } from "../../interfaces";
 import Welcome from "../Welcome/Welcome";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 const App = () => {
   const [error, setError] = useState("");
@@ -14,23 +15,39 @@ const App = () => {
 
   return (
     <div className="App">
-      <Route path='/'></Route>
-      <Header />
       {error ? (
         <h1>{error}</h1>
       ) : (
-        <main className="main-content">
+        <Switch>
+        <Route exact path="/">
           <Welcome />
-          {concerns ? 
-          <Results concerns={concerns}/> :
-          <>
-            <h1 className="heading">Terms of Service Processor</h1>
-            <p className="sub-heading">Understand what's important to you.</p>
-            <Form setConcerns={setConcerns} setError={setError}/>
-          </>}
-        </main>
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/form">
+          <Header />
+          <Form setConcerns={setConcerns} setError={setError}/>
+          <Footer />
+        </Route>
+        <Route exact path="/results">
+          <Results concerns={concerns}/>
+        </Route>
+
+      </Switch>
       )}
-      <Footer />   
+      {/* // <Header />
+      // {error ? ( */}
+      {/* //   <h1>{error}</h1>
+      // ) : (
+      //   <main className="main-content">
+      //     {concerns ?  */}
+      {/* //       <Results concerns={concerns}/> :
+      //       <Form setConcerns={setConcerns} setError={setError}/>
+      //     }
+      //   </main> */}
+      {/* // )}
+      // <Footer />    */}
     </div>
   );
 };
