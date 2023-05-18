@@ -6,7 +6,7 @@ interface TOSReturn {
 
 const processTOS = async (tos: string, concerns: string[], setError: Function, user: number | null): Promise<TOSReturn> => {
   const response = await fetch(
-    "https://2b7e0d8f-078d-48c9-8682-f1652a24a00b.mock.pstmn.io/api/queries",
+    "https://tldr-api.onrender.com/api/v1/queries",
     {
       method: "POST",
       headers: {

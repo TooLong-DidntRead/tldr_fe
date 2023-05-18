@@ -8,7 +8,7 @@ import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import { tosLibrary } from "../../tosLibrary";
-import { CircularProgress } from "@mui/material";
+import { Checkbox, CircularProgress, FormControlLabel, FormGroup, FormHelperText, FormLabel } from "@mui/material";
 
 interface FormProps {
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
@@ -16,19 +16,45 @@ interface FormProps {
   user: number | null;
 }
 
+interface ConcernArea {
+  [key:string]: boolean
+}
+
 const Form = ({ setConcerns, setError, user }: FormProps) => {
   const [tosInput, setTosInput] = useState(tosLibrary[0].tos);
   const [loading, setLoading] = useState(false);
-  console.log(loading);
+  const [concernAreas, setConcernAreas] = useState<ConcernArea>({
+    'Privacy': false,
+    'Security': false,
+    'Copyright': false,
+    'Liability': false,
+    'Cancellation': false,
+    'Payment': false
+  });
 
   const history = useHistory();
 
   const sendTOS = async () => {
-    setLoading(true);
-    const TOSinfo = await processTOS(tosInput, [], setError, user);
-    setConcerns(TOSinfo.data);
-    setLoading(false);
-    history.push("/results");
+    //setLoading(true);
+    const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
+    console.log(concerns);
+    // const TOSinfo = await processTOS(tosInput, concerns, setError, user);
+    // setConcerns(TOSinfo.data);
+    // setLoading(false);
+    // history.push("/results");
+  };
+
+  const getConcernAreaChecks = () => {
+    const keys = Object.keys(concernAreas);
+    return keys.map((key) => (
+      <FormControlLabel
+        key={key}
+        control={<Checkbox size="small" />}
+        label={key}
+        checked={concernAreas[key]}
+        onChange={e => setConcernAreas({...concernAreas, [key]: !concernAreas[key]})}
+      />
+    ));
   };
 
   return (
@@ -54,29 +80,24 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
             </h3>
             <TextField
               value={tosInput}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setTosInput(event.target.value);
-              }}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setTosInput(event.target.value) }}
               id="tos"
               multiline
-              rows={8}
-            />
+              rows={8}/>
+            <FormGroup row>
+              {getConcernAreaChecks()}
+            </FormGroup>
             <div className="form-footer">
               <Button
                 onClick={sendTOS}
                 color="primary"
                 variant="contained"
                 disableElevation
-                startIcon={<CheckRoundedIcon />}
-              >
-                Process
-              </Button>
+                startIcon={<CheckRoundedIcon />}> Process </Button>
               <Button
                 color="primary"
                 variant="outlined"
-                startIcon={<UploadFileIcon />}
-              >
-                Upload
+                startIcon={<UploadFileIcon />}> Upload
                 <input hidden accept="image/*" multiple type="file" />
               </Button>
             </div>
