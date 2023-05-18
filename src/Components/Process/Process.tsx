@@ -37,7 +37,7 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
   const sendTOS = async () => {
     setLoading(true);
     const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
-    const TOSinfo = await processTOS(tosInput, concerns, setError, user);
+    const TOSinfo = await processTOS(tosInput.replace('"', "'"), concerns, setError, user);
     setConcerns(TOSinfo.data);
     setLoading(false);
     history.push("/results");

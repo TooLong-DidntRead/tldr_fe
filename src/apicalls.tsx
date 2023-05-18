@@ -5,6 +5,12 @@ interface TOSReturn {
 };
 
 const processTOS = async (tos: string, concerns: string[], setError: Function, user: number | null): Promise<TOSReturn> => {
+  const jsonify = JSON.stringify( {
+      areas_of_focus: concerns,
+      tos: tos,
+      user: user
+    })
+  console.log(jsonify)
   const response = await fetch(
     "https://tldr-api.onrender.com/api/v1/queries",
     {
@@ -12,13 +18,7 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        data: {
-          user: user,
-          tos: tos,
-          concerns: concerns,
-        },
-      }),
+      body: jsonify,
     }
   );
 
@@ -26,6 +26,7 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
 
   if (!response.ok) {
     const res = await response.json();
+    console.log(res)
     throw new Error(res.statusText);
   }
 
