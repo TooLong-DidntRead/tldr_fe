@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import Process from "../Process/Process";
 import Login from "../Login/Login";
 import Results from "../Results/Results";
