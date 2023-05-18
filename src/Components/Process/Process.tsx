@@ -8,7 +8,7 @@ import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import { tosLibrary } from "../../tosLibrary";
-import { Checkbox, CircularProgress, FormControlLabel, FormGroup, FormHelperText, FormLabel } from "@mui/material";
+import { Checkbox, CircularProgress, FormControlLabel, FormGroup } from "@mui/material";
 
 interface FormProps {
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
@@ -35,13 +35,12 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
   const history = useHistory();
 
   const sendTOS = async () => {
-    //setLoading(true);
+    setLoading(true);
     const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
-    console.log(concerns);
-    // const TOSinfo = await processTOS(tosInput, concerns, setError, user);
-    // setConcerns(TOSinfo.data);
-    // setLoading(false);
-    // history.push("/results");
+    const TOSinfo = await processTOS(tosInput, concerns, setError, user);
+    setConcerns(TOSinfo.data);
+    setLoading(false);
+    history.push("/results");
   };
 
   const getConcernAreaChecks = () => {
