@@ -1,4 +1,3 @@
-import React from "react";
 import "./Welcome.css";
 import logo_sm from "../../images/tldr_sm_dark.svg";
 import { Button } from "@mui/material";
@@ -9,13 +8,14 @@ const Welcome = () => {
 
   return (
     <main className="welcome-main">
-      <div className="welcome-container">
+      <div className="welcome-card">
         <h1 className="welcome-h1">Welcome to</h1>
-        <img className="logo" src={logo_sm} alt="logo" />
+        <img className="welcome-logo" src={logo_sm} alt="logo" />
         <h2 className="summary">TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service.</h2>
         <h3 className="summary instructions"> Simply copy and paste your user agreement into the TL:DR form and see an easy-to-read summary organized by topic and powered by ChatGPT.</h3>
        <Link to="/login">
           <Button
+            disableElevation
             color="primary"
             variant="contained"
           >Begin Demo</Button>
