@@ -2,25 +2,9 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-}
-
-main {
-  padding: 2rem;
-}
-
-.heading {
-  margin-top: 1rem;
-  font-size: 1.8rem;
-  color: var(--medium-black);
-  text-align: center;
-  color: var(--blue);
-}
-
-.sub-heading {
-  font-size: 1rem;
-  color: var(--medium-black);
-  opacity: 0.8;
-  text-align: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 @media screen and (max-width: 600px) {

@@ -7,7 +7,7 @@ interface ConcernRowProps {
   title: string
   ranking: number
   icon?: React.ReactNode
-  selectConcern: (id: number) => void
+  selectConcern: React.Dispatch<React.SetStateAction<number>>
 }
 
 const ConcernRow = ({id, title, ranking, icon, selectConcern}: ConcernRowProps) => {
