@@ -7,7 +7,18 @@ import processTOS from "../../apicalls";
 import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
-import { Checkbox, CircularProgress, FormControlLabel, FormGroup } from "@mui/material";
+import {
+  Checkbox,
+  CircularProgress,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { tosLibrary } from "../../tosLibrary";
 
 interface FormProps {
   tosInput: string;
@@ -17,16 +28,16 @@ interface FormProps {
   user: number | null;
 }
 
- const Process = ({ tosInput, setTosInput, setConcerns, setError, user }: FormProps) => {
-
+const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps) => {
   const [loading, setLoading] = useState(false);
-  const [concernAreas, setConcernAreas] = useState<{[key:string]: boolean}>({
-    'Privacy': false,
-    'Security': false,
-    'Copyright': false,
-    'Liability': false,
-    'Cancellation': false,
-    'Payment': false
+  const [selectedLibrary, setSelectedLibrary] = useState('');
+  const [concernAreas, setConcernAreas] = useState<{ [key: string]: boolean }>({
+    Privacy: false,
+    Security: false,
+    Copyright: false,
+    Liability: false,
+    Cancellation: false,
+    Payment: false
   });
 
   const history = useHistory();
@@ -34,13 +45,20 @@ interface FormProps {
   const sendTOS = async () => {
     try {
       setLoading(true);
-      const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
-      const TOSinfo = await processTOS(tosInput.replace('"', "'"), concerns, setError, user);
+      const concerns = Object.keys(concernAreas).filter(
+        (key) => concernAreas[key]
+      );
+      const TOSinfo = await processTOS(
+        tosInput.replace('"', "'"),
+        concerns,
+        setError,
+        user
+      );
       setConcerns(TOSinfo.data);
       setLoading(false);
       history.push("/results");
-    } catch (error:any) {
-      const errorMessage:string = error.message;
+    } catch (error: any) {
+      const errorMessage: string = error.message;
       setError(errorMessage);
     }
   };
@@ -53,9 +71,21 @@ interface FormProps {
         control={<Checkbox size="small" />}
         label={key}
         checked={concernAreas[key]}
-        onChange={e => setConcernAreas({...concernAreas, [key]: !concernAreas[key]})}
+        onChange={(e) =>
+          setConcernAreas({ ...concernAreas, [key]: !concernAreas[key] })
+        }
       />
     ));
+  };
+
+  const handleTOSChange = (tos: string) => {
+    setSelectedLibrary('');
+    setTosInput(tos);
+  }
+
+  const handleLibraryChange = (event: SelectChangeEvent) => {
+    setSelectedLibrary(event.target.value);
+    setTosInput(event.target.value);
   };
 
   return (
@@ -66,41 +96,53 @@ interface FormProps {
       <form className="form-card">
         {loading ? (
           <>
-            <h3 className="form-heading">
-              Processing Terms of Service, Please Wait
-            </h3>
+            <h3 className="form-heading"> Processing Terms of Service, Please Wait</h3>
             <div className="loading-parent">
-              <CircularProgress id="loading-icon"/>
+              <CircularProgress id="loading-icon" />
             </div>
           </>
         ) : (
           <>
-            <h3 className="form-heading">
-              Paste, upload, or select your Terms of Service from a list of
-              popular services.
-            </h3>
+            <h3 className="form-heading">Paste, upload, or select your Terms of Service from a list of popular services.</h3>
             <TextField
               value={tosInput}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setTosInput(event.target.value) }}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                handleTOSChange(event.target.value);
+              }}
               id="tos"
               multiline
-              rows={8}/>
-            <FormGroup row>
-              {getConcernAreaChecks()}
-            </FormGroup>
+              rows={8}
+            />
+            <FormGroup row>{getConcernAreaChecks()}</FormGroup>
             <div className="form-footer">
-              <Button
-                onClick={sendTOS}
-                color="primary"
-                variant="contained"
-                disableElevation
-                startIcon={<CheckRoundedIcon />}> Process </Button>
-              <Button
-                color="primary"
-                variant="outlined"
-                startIcon={<UploadFileIcon />}> Upload
-                <input hidden accept="image/*" multiple type="file" />
-              </Button>
+              <FormControl sx={{ m: 0, minWidth: 160 }} size="small" >
+                <InputLabel id="tos-library-label">TOS LIbrary</InputLabel>
+                <Select
+                  labelId="tos-library-label"
+                  id="tos-library-select"
+                  value={selectedLibrary}
+                  label="Select TOS"
+                  onChange={handleLibraryChange}>
+                  {tosLibrary.map(tos => <MenuItem value={tos.tos}>{tos.service}</MenuItem>)}
+                </Select>
+              </FormControl>
+              <div className="buttons-parent">
+                <Button
+                  onClick={sendTOS}
+                  color="primary"
+                  variant="contained"
+                  disableElevation
+                  startIcon={<CheckRoundedIcon />}
+                > Process
+                </Button>
+                <Button
+                  color="primary"
+                  variant="outlined"
+                  startIcon={<UploadFileIcon />}>
+                  Upload
+                  <input hidden accept="image/*" multiple type="file" />
+                </Button>
+              </div>
             </div>
           </>
         )}
