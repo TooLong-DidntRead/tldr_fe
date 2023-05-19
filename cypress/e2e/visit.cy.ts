@@ -1,7 +1,7 @@
 describe("As a user, I should be able to see the welcome page and navigate to the home page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/");
-  });
+    cy.visit("http://localhost:3000/")
+  })
 
   it("Should be able to see a welcome page", () => {
     cy.get(".welcome-card")
