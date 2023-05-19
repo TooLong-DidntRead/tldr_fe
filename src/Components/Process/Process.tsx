@@ -17,7 +17,8 @@ interface FormProps {
   user: number | null;
 }
 
-const Process = ({ tosInput, setTosInput, setConcerns, setError, user }: FormProps) => {
+ const Process = ({ tosInput, setTosInput, setConcerns, setError, user }: FormProps) => {
+
   const [loading, setLoading] = useState(false);
   const [concernAreas, setConcernAreas] = useState<{[key:string]: boolean}>({
     'Privacy': false,
@@ -31,12 +32,17 @@ const Process = ({ tosInput, setTosInput, setConcerns, setError, user }: FormPro
   const history = useHistory();
 
   const sendTOS = async () => {
-    setLoading(true);
-    const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
-    const TOSinfo = await processTOS(tosInput.replace('"', "'"), concerns, setError, user);
-    setConcerns(TOSinfo.data);
-    setLoading(false);
-    history.push("/results");
+    try {
+      setLoading(true);
+      const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
+      const TOSinfo = await processTOS(tosInput.replace('"', "'"), concerns, setError, user);
+      setConcerns(TOSinfo.data);
+      setLoading(false);
+      history.push("/results");
+    } catch (error:any) {
+      const errorMessage:string = error.message;
+      setError(errorMessage);
+    }
   };
 
   const getConcernAreaChecks = () => {
