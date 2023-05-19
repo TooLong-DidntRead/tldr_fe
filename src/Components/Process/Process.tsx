@@ -20,7 +20,7 @@ interface ConcernArea {
   [key:string]: boolean
 }
 
-const Form = ({ setConcerns, setError, user }: FormProps) => {
+const Process = ({ setConcerns, setError, user }: FormProps) => {
   const [tosInput, setTosInput] = useState(tosLibrary[0].tos);
   const [loading, setLoading] = useState(false);
   const [concernAreas, setConcernAreas] = useState<ConcernArea>({
@@ -112,4 +112,4 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
   );
 };
 
-export default Form;
+export default Process;

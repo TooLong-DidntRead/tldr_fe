@@ -8,6 +8,7 @@ import Results from "../Results/Results";
 import { ConcernShape } from "../../interfaces";
 import Welcome from "../Welcome/Welcome";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import NotFound from "../NotFound/NotFound";
 
 const App = () => {
   const [error, setError] = useState<string>("");
@@ -25,7 +26,8 @@ const App = () => {
   return (
     <div className="App">
       {error ? (
-        <h1>{error}</h1>
+        <NotFound error={error} setError={setError}/>
+        // <Redirect to={'/not-found'}/>
       ) : (
         <Switch>
           <Route exact path="/">
@@ -36,14 +38,14 @@ const App = () => {
           </Route>
           <Route exact path="/process">
           {user ? (
-              <>
-            <Header logout={logout} user={user} />
-            <Process
-              setConcerns={setConcerns}
-              setError={setError}
-              user={user}
-            />
-              </>
+            <>
+              <Header logout={logout} user={user} />
+              <Process
+                setConcerns={setConcerns}
+                setError={setError}
+                user={user}
+              />
+            </>
             ) : (
               <Redirect to={'/login'}/>
             )}
@@ -57,6 +59,12 @@ const App = () => {
             ) : (
               <Redirect to={'/process'}/>
             )}
+          </Route>
+          <Route path="/not-found">
+              <NotFound error={error} setError={setError}/>
+          </Route>
+          <Route path="/*">
+            <Redirect to={'/not-found'}/>
           </Route>
         </Switch>
       )}
