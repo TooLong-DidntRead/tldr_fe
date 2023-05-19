@@ -16,7 +16,7 @@ const ConcernRow = ({id, title, ranking, icon, selectConcern}: ConcernRowProps) 
     if(ranking <= 4) {
       return <PriorityHighRoundedIcon sx={{ color: '#D7263D' }}/>
     }else if(ranking <= 7) {
-      return <SentimentNeutralIcon sx={{ color: '#0D4C92' }}/>
+      return <SentimentNeutralIcon sx={{ color: '#ffa62b' }}/>
     }else {
       return <ThumbUpAltRoundedIcon sx={{ color: '#358600' }}/>
     }

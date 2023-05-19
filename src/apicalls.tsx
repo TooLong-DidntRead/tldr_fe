@@ -21,7 +21,7 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
   //https://tldr-api.onrender.com/api/v1/queries
   //https://4196c33d-8951-4a3a-8216-bffd37431cc2.mock.pstmn.io/api/v1/processTOS
   const response = await fetch(
-    "https://tldr-api.onrender.com/api/v1/queries",
+    "https://4196c33d-8951-4a3a-8216-bffd37431cc2.mock.pstmn.io/api/v1/processTOS",
     details
   );
 

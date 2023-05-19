@@ -31,7 +31,7 @@ const Results = ({ concerns }: ResultsProps) => {
     if(value <= 4) {
       return '#D7263D';
     }else if(value <= 7) {
-      return '#0D4C92';
+      return '#ffa62b';
     }else {
       return '#358600';
     }
