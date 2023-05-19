@@ -10,7 +10,7 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
       tos: tos,
       user: user
     })
-  console.log(jsonify)
+
   const response = await fetch(
     "https://tldr-api.onrender.com/api/v1/queries",
     {
@@ -26,7 +26,6 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
 
   if (!response.ok) {
     const res = await response.json();
-    console.log(res)
     throw new Error(res.statusText);
   }
 

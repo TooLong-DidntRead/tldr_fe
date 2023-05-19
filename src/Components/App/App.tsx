@@ -10,7 +10,7 @@ import Welcome from "../Welcome/Welcome";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 const App = () => {
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
   const [concerns, setConcerns] = useState<ConcernShape[] | null>(null);
   const [user, setUser] = useState<number | null>(null);
 
