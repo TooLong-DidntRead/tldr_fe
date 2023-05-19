@@ -11,7 +11,6 @@ interface ConcernRowProps {
 }
 
 const ConcernRow = ({id, title, ranking, icon, selectConcern}: ConcernRowProps) => {
-  console.log(ranking)
   const getIcon = (): React.ReactNode => {  
     if(ranking <= 4) {
       return <PriorityHighRoundedIcon sx={{ color: '#D7263D' }}/>

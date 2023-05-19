@@ -1,31 +1,25 @@
 import { useState } from "react";
 import { ConcernShape } from "../../interfaces";
-import ConcernRow from "./Concern/ConcernRow";
+import ConcernRow from "./ConcernRow/ConcernRow";
 import "./Results.css";
 
 interface ResultsProps {
-  concerns: ConcernShape[] | null;
+  concerns: ConcernShape[];
 }
-
-// const concernFriendly: {[key: string] : string} = {
-//   "privacy": "Privacy",
-//   "security": "Security",
-//   "intellectualProperty": "Intellectual Property",
-//   "liability": "Liability and Indemnification",
-//   "cancellation": "Termination and Cancellation",
-//   "payment": "Payment and Fees"
-// }
 
 const Results = ({ concerns }: ResultsProps) => {
   const [selectedConcern, setSelectedConcern] = useState(0);
-  
-  const selectedConcernKey:string | null = concerns && Object.keys(concerns[selectedConcern].response)[0];
-
   const concernRows =
-    concerns &&
     concerns.map((concern, i) => {
-      const concernKey:string = Object.keys(concern.response)[0]
-      return <ConcernRow id={i} key={i} ranking={concern.response[concernKey].ranking} selectConcern={setSelectedConcern} title={concernKey}/>
+      return (
+        <ConcernRow
+          id={i}
+          key={i}
+          ranking={concern.ranking}
+          selectConcern={setSelectedConcern}
+          title={concern.title}
+        />
+      );
     });
 
   return (
@@ -35,16 +29,16 @@ const Results = ({ concerns }: ResultsProps) => {
         <div className="concern-rows">{concernRows}</div>
         <div className="results-card">
           <div className="results-card-header">
-            <h3>{concerns && selectedConcernKey}</h3>
-            <h4>Ranking: {concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].ranking}</h4>
+            <h3>{concerns[selectedConcern].title}</h3>
+            <h4>Ranking: {concerns[selectedConcern].ranking}</h4>
           </div>
           <div className="results-card-section">
             <h4>How Does This Impact Me?</h4>
-            <p>{concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].impact}</p>
+            <p>{concerns[selectedConcern].impact}</p>
           </div>
           <div className="results-card-section">
             <h4>Actionable Steps</h4>
-            <p>{concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].actionable}</p>
+            <p>{concerns[selectedConcern].actionable}</p>
           </div>
         </div>
       </div>

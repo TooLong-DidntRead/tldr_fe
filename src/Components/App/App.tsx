@@ -13,7 +13,7 @@ const App = () => {
   const [error, setError] = useState("");
   const [concerns, setConcerns] = useState<ConcernShape[] | null>(null);
   const [user, setUser] = useState<number | null>(null);
-
+  const [tosInput, setTosInput] = useState('');
   const history = useHistory();
 
   const logout = () => {
@@ -39,6 +39,8 @@ const App = () => {
               <>
             <Header logout={logout} user={user} />
             <Process
+              tosInput={tosInput}
+              setTosInput={setTosInput}
               setConcerns={setConcerns}
               setError={setError}
               user={user}
