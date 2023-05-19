@@ -2,8 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 5vw;
+  align-items: center;
+  padding: 2rem;
   gap: 2rem;
+}
+
+.results-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .results-title {
@@ -11,11 +21,12 @@
   font-size: 3rem;
   font-weight: 300;
   color: var(--blue);
+  text-align: start;
 }
 
 .results-lower {
   display: flex;
-  gap: 2vw;
+  gap: 1rem;
 }
 
 .concern-rows {
@@ -29,10 +40,10 @@
   flex-direction: column;
   max-width: 600px;
   gap: 2rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   border-radius: 6px;
   padding: 2rem;
 }
@@ -46,11 +57,30 @@
 .result-concern-title {
   text-transform: capitalize;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
-@media screen and (max-width: 700px) {
+.meter-parent {
+  width: 80px;
+  height: 80px;
+}
+
+@media screen and (max-width: 600px) {
   .results-lower {
     flex-direction: column;
+  }
+
+  .results-title { 
+    font-size: 2rem;
+  }
+
+  .result-concern-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .meter-parent {
+    width: 60px;
+    height: 60px;
   }
 }
