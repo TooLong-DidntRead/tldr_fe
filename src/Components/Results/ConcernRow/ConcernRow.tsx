@@ -1,6 +1,7 @@
 import './ConcernRow.css'
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 
 interface ConcernRowProps {
   id: number
@@ -11,12 +12,11 @@ interface ConcernRowProps {
 }
 
 const ConcernRow = ({id, title, ranking, icon, selectConcern}: ConcernRowProps) => {
-  console.log(ranking)
   const getIcon = (): React.ReactNode => {  
     if(ranking <= 4) {
       return <PriorityHighRoundedIcon sx={{ color: '#D7263D' }}/>
     }else if(ranking <= 7) {
-      return <div></div>
+      return <SentimentNeutralIcon sx={{ color: '#ffa62b' }}/>
     }else {
       return <ThumbUpAltRoundedIcon sx={{ color: '#358600' }}/>
     }
