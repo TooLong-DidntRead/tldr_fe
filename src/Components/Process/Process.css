@@ -20,16 +20,8 @@
   color: var(--medium-black);
   opacity: 0.8;
   text-align: center;
-}
-
-@media screen and (max-width: 600px) {
-  .heading {
-    font-size: 1.4rem;
-  }
-
-  .sub-heading {
-     font-size: 0.9rem;
-  }
+  font-style: italic;
+  padding-top: .5rem;
 }
 
 .form-card {
@@ -73,4 +65,14 @@
   justify-content: center;
   min-width: 20vw;
   min-height: 20vw;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    font-size: 1.4rem;
+  }
+
+  .sub-heading {
+     font-size: 0.9rem;
+  }
 }

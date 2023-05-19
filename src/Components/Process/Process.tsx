@@ -7,23 +7,20 @@ import processTOS from "../../apicalls";
 import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
-import { tosLibrary } from "../../tosLibrary";
 import { Checkbox, CircularProgress, FormControlLabel, FormGroup } from "@mui/material";
 
 interface FormProps {
+  tosInput: string;
+  setTosInput: Dispatch<React.SetStateAction<string>>;
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
   setError: Dispatch<React.SetStateAction<string>>;
   user: number | null;
 }
 
-interface ConcernArea {
-  [key:string]: boolean
-}
+ const Process = ({ tosInput, setTosInput, setConcerns, setError, user }: FormProps) => {
 
-const Form = ({ setConcerns, setError, user }: FormProps) => {
-  const [tosInput, setTosInput] = useState(tosLibrary[0].tos);
   const [loading, setLoading] = useState(false);
-  const [concernAreas, setConcernAreas] = useState<ConcernArea>({
+  const [concernAreas, setConcernAreas] = useState<{[key:string]: boolean}>({
     'Privacy': false,
     'Security': false,
     'Copyright': false,
@@ -35,12 +32,17 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
   const history = useHistory();
 
   const sendTOS = async () => {
-    setLoading(true);
-    const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
-    const TOSinfo = await processTOS(tosInput.replace('"', "'"), concerns, setError, user);
-    setConcerns(TOSinfo.data);
-    setLoading(false);
-    history.push("/results");
+    try {
+      setLoading(true);
+      const concerns = Object.keys(concernAreas).filter(key => concernAreas[key]);
+      const TOSinfo = await processTOS(tosInput.replace('"', "'"), concerns, setError, user);
+      setConcerns(TOSinfo.data);
+      setLoading(false);
+      history.push("/results");
+    } catch (error:any) {
+      const errorMessage:string = error.message;
+      setError(errorMessage);
+    }
   };
 
   const getConcernAreaChecks = () => {
@@ -107,4 +109,4 @@ const Form = ({ setConcerns, setError, user }: FormProps) => {
   );
 };
 
-export default Form;
+export default Process;
