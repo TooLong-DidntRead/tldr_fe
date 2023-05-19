@@ -24,16 +24,6 @@
   padding-top: .5rem;
 }
 
-@media screen and (max-width: 600px) {
-  .heading {
-    font-size: 1.4rem;
-  }
-
-  .sub-heading {
-     font-size: 0.9rem;
-  }
-}
-
 .form-card {
   min-width: 300px;
   display: flex;
@@ -75,4 +65,14 @@
   justify-content: center;
   min-width: 20vw;
   min-height: 20vw;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    font-size: 1.4rem;
+  }
+
+  .sub-heading {
+     font-size: 0.9rem;
+  }
 }

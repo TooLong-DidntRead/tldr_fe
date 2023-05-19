@@ -7,23 +7,20 @@ import processTOS from "../../apicalls";
 import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
-import { tosLibrary } from "../../tosLibrary";
 import { Checkbox, CircularProgress, FormControlLabel, FormGroup } from "@mui/material";
 
 interface FormProps {
+  tosInput: string;
+  setTosInput: Dispatch<React.SetStateAction<string>>;
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
   setError: Dispatch<React.SetStateAction<string>>;
   user: number | null;
 }
 
-interface ConcernArea {
-  [key:string]: boolean
-}
+ const Process = ({ tosInput, setTosInput, setConcerns, setError, user }: FormProps) => {
 
-const Process = ({ setConcerns, setError, user }: FormProps) => {
-  const [tosInput, setTosInput] = useState(tosLibrary[0].tos);
   const [loading, setLoading] = useState(false);
-  const [concernAreas, setConcernAreas] = useState<ConcernArea>({
+  const [concernAreas, setConcernAreas] = useState<{[key:string]: boolean}>({
     'Privacy': false,
     'Security': false,
     'Copyright': false,

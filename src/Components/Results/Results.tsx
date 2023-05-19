@@ -1,50 +1,81 @@
 import { useState } from "react";
 import { ConcernShape } from "../../interfaces";
-import ConcernRow from "./Concern/ConcernRow";
+import ConcernRow from "./ConcernRow/ConcernRow";
 import "./Results.css";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { Button } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 interface ResultsProps {
-  concerns: ConcernShape[] | null;
+  concerns: ConcernShape[];
 }
-
-// const concernFriendly: {[key: string] : string} = {
-//   "privacy": "Privacy",
-//   "security": "Security",
-//   "intellectualProperty": "Intellectual Property",
-//   "liability": "Liability and Indemnification",
-//   "cancellation": "Termination and Cancellation",
-//   "payment": "Payment and Fees"
-// }
 
 const Results = ({ concerns }: ResultsProps) => {
   const [selectedConcern, setSelectedConcern] = useState(0);
-  
-  const selectedConcernKey:string | null = concerns && Object.keys(concerns[selectedConcern].response)[0];
-
   const concernRows =
-    concerns &&
     concerns.map((concern, i) => {
-      const concernKey:string = Object.keys(concern.response)[0]
-      return <ConcernRow id={i} key={i} ranking={concern.response[concernKey].ranking} selectConcern={setSelectedConcern} title={concernKey}/>
+      return (
+        <ConcernRow
+          id={i}
+          key={i}
+          ranking={concern.ranking}
+          selectConcern={setSelectedConcern}
+          title={concern.title}
+        />
+      );
     });
+  
+  const getMeterColor = (value: number) : string => {
+    if(value <= 4) {
+      return '#D7263D';
+    }else if(value <= 7) {
+      return '#ffa62b';
+    }else {
+      return '#358600';
+    }
+  }
 
   return (
     <main className="results-main">
-      <h1 className="results-title">Your Results</h1>
-      <div className="results-lower">
-        <div className="concern-rows">{concernRows}</div>
-        <div className="results-card">
-          <div className="results-card-header">
-            <h3>{concerns && selectedConcernKey}</h3>
-            <h4>Ranking: {concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].ranking}</h4>
-          </div>
-          <div className="results-card-section">
-            <h4>How Does This Impact Me?</h4>
-            <p>{concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].impact}</p>
-          </div>
-          <div className="results-card-section">
-            <h4>Actionable Steps</h4>
-            <p>{concerns && selectedConcernKey && concerns[selectedConcern].response[selectedConcernKey].actionable}</p>
+      <div>
+        <div className="results-title-bar">
+          <h1 className="results-title">Your Results</h1>
+          <Link to="/process">
+            <Button startIcon={<ArrowBack />}>Process Again</Button>
+          </Link>
+        </div>
+        <div className="results-lower">
+          <div className="concern-rows">{concernRows}</div>
+          <div className="results-card">
+            <div className="results-card-header">
+              <h3 className="result-concern-title">
+                {concerns[selectedConcern].title}
+              </h3>
+              <div className="meter-parent">
+                <CircularProgressbar
+                  value={concerns[selectedConcern].ranking}
+                  maxValue={10}
+                  text={`${concerns[selectedConcern].ranking}/10`}
+                  styles={buildStyles({
+                    pathColor: getMeterColor(concerns[selectedConcern].ranking),
+                    textColor: "#2E2E2E",
+                    textSize: "1.3rem",
+                    trailColor: "#d6d6d6",
+                    backgroundColor: "#3e98c7",
+                  })}
+                />
+              </div>
+            </div>
+            <div className="results-card-section">
+              <h4>How Does This Impact Me?</h4>
+              <p>{concerns[selectedConcern].impact}</p>
+            </div>
+            <div className="results-card-section">
+              <h4>Actionable Steps</h4>
+              <p>{concerns[selectedConcern].actionable}</p>
+            </div>
           </div>
         </div>
       </div>

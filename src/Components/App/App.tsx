@@ -14,7 +14,7 @@ const App = () => {
   const [error, setError] = useState<string>("");
   const [concerns, setConcerns] = useState<ConcernShape[] | null>(null);
   const [user, setUser] = useState<number | null>(null);
-
+  const [tosInput, setTosInput] = useState('');
   const history = useHistory();
 
   const logout = () => {
@@ -38,14 +38,16 @@ const App = () => {
           </Route>
           <Route exact path="/process">
           {user ? (
-            <>
-              <Header logout={logout} user={user} />
-              <Process
-                setConcerns={setConcerns}
-                setError={setError}
-                user={user}
-              />
-            </>
+              <>
+            <Header logout={logout} user={user} />
+            <Process
+              tosInput={tosInput}
+              setTosInput={setTosInput}
+              setConcerns={setConcerns}
+              setError={setError}
+              user={user}
+            />
+              </>
             ) : (
               <Redirect to={'/login'}/>
             )}
