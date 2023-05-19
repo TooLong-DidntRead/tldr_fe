@@ -12,7 +12,7 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
     })
 
   const response = await fetch(
-    "https://tldr-api.onrender.com/api/v1/que0ries",
+    "https://tldr-api.onrender.com/api/v1/queries",
     {
       method: "POST",
       headers: {

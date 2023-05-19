@@ -9,7 +9,7 @@ const Welcome = () => {
   return (
     <main className="welcome-main">
       <div className="welcome-card">
-        <h1 className="welcome-h1">Welcome to</h1>
+        <h1 className="welcome-h1">~ Welcome to ~</h1>
         <img className="welcome-logo" src={logo_sm} alt="logo" />
         <h2 className="summary">TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service.</h2>
         <h3 className="summary instructions"> Simply copy and paste your user agreement into the TL:DR form and see an easy-to-read summary organized by topic and powered by ChatGPT.</h3>
