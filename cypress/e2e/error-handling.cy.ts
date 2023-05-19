@@ -1,4 +1,8 @@
 describe("Error Handling", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000/");
+  });
+  
   it("Should display an error page when url is not found", () => {
     cy.visit("http://localhost:3000/abc");
     cy.get(".error-card")
