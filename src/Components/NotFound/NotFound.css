@@ -8,8 +8,9 @@
 }
 
 .error-card {
+  width: 50%;
+  height: 60%;
   display: flex;
-  max-width: 800px;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -19,4 +20,8 @@
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.error-title, .error-message, .error-content {
+  padding: .8rem;
 }
