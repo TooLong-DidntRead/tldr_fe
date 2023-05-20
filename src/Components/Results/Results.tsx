@@ -16,7 +16,7 @@ interface ResultsProps {
 const Results = ({ concerns }: ResultsProps) => {
   const [selectedConcern, setSelectedConcern] = useState(0);
   
-  const ratingExplanation :string = "Consumer Friendliness Rating. The progress bar represents a rating from 1 - 10. 1 being the most friendly to the business which created the ToS, 10 being the most consumer-friendly."
+  const ratingExplanation :string = "Consumer Friendliness Rating: the progress bar represents a rating from 1 - 10. 1 being the most friendly to the business which created the ToS, 10 being the most consumer-friendly.";
   
   const concernRows =
     concerns.map((concern, i) => {

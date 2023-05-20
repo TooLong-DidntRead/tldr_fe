@@ -5,11 +5,11 @@ import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 
 interface ConcernRowProps {
-  id: number
-  title: string
-  ranking: number
-  icon?: React.ReactNode
-  selectConcern: React.Dispatch<React.SetStateAction<number>>
+  id: number;
+  title: string;
+  ranking: number;
+  icon?: React.ReactNode;
+  selectConcern: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const ConcernRow = ({id, title, ranking, selectConcern}: ConcernRowProps) => {
@@ -24,11 +24,10 @@ const ConcernRow = ({id, title, ranking, selectConcern}: ConcernRowProps) => {
   }
 
   const handleKeyPress = (event:KeyboardEvent, id:number): void => {
-    console.log(event.key)
     if (event.key === "Enter") {
-      selectConcern(id)
-    }
-  }
+      selectConcern(id);
+    };
+  };
 
   return (
     <div className='concern-row' onClick={() => selectConcern(id)} onKeyDown={(event)=>{handleKeyPress(event, id)}}tabIndex={0}>

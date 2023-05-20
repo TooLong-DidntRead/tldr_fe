@@ -7,24 +7,22 @@ import Avatar from "@mui/material/Avatar";
 import { useHistory } from "react-router-dom";
 
 interface LoginProps {
-  setUser: React.Dispatch<React.SetStateAction<number | null>>
-}
-
+  setUser: React.Dispatch<React.SetStateAction<number | null>>;
+};
 
 const Login = ({setUser}:LoginProps) => {
   let history = useHistory();
 
   const loginUser = (id:number) => {
-    history.push("/process")
-    setUser(id)
-  }
+    history.push("/process");
+    setUser(id);
+  };
 
   const handleKeyPress = (event:KeyboardEvent, id:number): void => {
-    console.log(event.key)
     if (event.key === "Enter") {
-      loginUser(id)
-    }
-  }
+      loginUser(id);
+    };
+  };
 
   return (
     <main className="login-main">

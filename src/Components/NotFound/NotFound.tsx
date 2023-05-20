@@ -8,12 +8,12 @@ import CottageIcon from '@mui/icons-material/Cottage';
 interface NotFoundProps {
   error?: string;
   setError: Function;
-}
+};
 
 const NotFound = ({error, setError}: NotFoundProps) => {
   const resetError = () => {
     setError(false);
-  }
+  };
 
   return (
     <main className="error-main">
@@ -30,6 +30,6 @@ const NotFound = ({error, setError}: NotFoundProps) => {
       </div>
     </main>
   )
-}
+};
 
 export default NotFound;

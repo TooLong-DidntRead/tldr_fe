@@ -60,16 +60,16 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
     } catch (error: any) {
       const errorMessage: string = error.message;
       setError(errorMessage);
-    }
+    };
   };
 
   const getConcernCount = () => {
-    const keys = Object.keys(concernAreas)
+    const keys = Object.keys(concernAreas);
     return keys.reduce((acc, key) => {
       concernAreas[key] && acc++;
       return acc ;
-    }, 0)
-  }
+    }, 0);
+  };
 
   const getConcernAreaChecks = () => {
     const keys = Object.keys(concernAreas);
