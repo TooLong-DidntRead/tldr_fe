@@ -11,7 +11,7 @@ interface ConcernRowProps {
   selectConcern: React.Dispatch<React.SetStateAction<number>>
 }
 
-const ConcernRow = ({id, title, ranking, icon, selectConcern}: ConcernRowProps) => {
+const ConcernRow = ({id, title, ranking, selectConcern}: ConcernRowProps) => {
   const getIcon = (): React.ReactNode => {  
     if(ranking <= 4) {
       return <PriorityHighRoundedIcon sx={{ color: '#D7263D' }}/>
@@ -23,7 +23,7 @@ const ConcernRow = ({id, title, ranking, icon, selectConcern}: ConcernRowProps) 
   }
 
   return (
-    <div className='concern-row' onClick={() => selectConcern(id)}>
+    <div className='concern-row' onClick={() => selectConcern(id)} tabIndex={0}>
       <p className='concern-title'>{title}</p>
       {getIcon()}
     </div>
