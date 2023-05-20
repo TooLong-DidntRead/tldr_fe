@@ -1,6 +1,6 @@
 describe("As a user, I should recieve a summary of the terms that is easy to read and understand", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:3000/");
+    cy.visit("/");
     cy.get(".MuiButtonBase-root").click();
     cy.get(":nth-child(1) > #avatar-img > .MuiAvatar-img").click();
   });
