@@ -1,3 +1,4 @@
+import React, {KeyboardEvent} from 'react';
 import './ConcernRow.css'
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
@@ -22,8 +23,15 @@ const ConcernRow = ({id, title, ranking, selectConcern}: ConcernRowProps) => {
     }
   }
 
+  const handleKeyPress = (event:KeyboardEvent, id:number): void => {
+    console.log(event.key)
+    if (event.key === "Enter") {
+      selectConcern(id)
+    }
+  }
+
   return (
-    <div className='concern-row' onClick={() => selectConcern(id)} tabIndex={0}>
+    <div className='concern-row' onClick={() => selectConcern(id)} onKeyDown={(event)=>{handleKeyPress(event, id)}}tabIndex={0}>
       <p className='concern-title'>{title}</p>
       {getIcon()}
     </div>
