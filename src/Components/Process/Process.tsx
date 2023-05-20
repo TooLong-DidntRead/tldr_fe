@@ -147,9 +147,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
                 <Button
                   color="primary"
                   variant="outlined"
-                  startIcon={<UploadFileIcon />}>
-                  Upload
-                  <input hidden accept="image/*" multiple type="file" />
+                  startIcon={<UploadFileIcon />}> Upload
                 </Button>
               </div>
             </div>
