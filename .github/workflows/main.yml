@@ -15,7 +15,7 @@ jobs:
         with:
           build: npm run build
           start: npm start
-          wait-on: 'npx wait-on --timeout 5000 http://127.0.0.1:3000'
+          wait-on: 'npx wait-on --timeout 5000 http://127.0.0.1:3000/'
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
