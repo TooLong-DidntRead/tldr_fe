@@ -4,7 +4,7 @@ import ConcernRow from "./ConcernRow/ConcernRow";
 import "./Results.css";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Button, Popover, Typography } from "@mui/material";
+import { Button, Popover, Typography, Tooltip } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from "react-router-dom";
@@ -59,6 +59,7 @@ const Results = ({ concerns }: ResultsProps) => {
               <h3 className="result-concern-title">
                 {concerns[selectedConcern].title}
               </h3>
+              <Tooltip title="Consumer Friendliness Rating">
               <div className="meter-parent">
                   <CircularProgressbar
                     value={concerns[selectedConcern].ranking}
@@ -87,6 +88,7 @@ const Results = ({ concerns }: ResultsProps) => {
                       The progress bar represents a rating from 1 - 10, 1 being the most friendly to the business who created the ToS, 10 being the most consumer friendly! 
                     </Popover>
               </div>
+              </Tooltip>
             </div>
             <div className="results-card-section">
               <h4>How Does This Impact Me?</h4>
