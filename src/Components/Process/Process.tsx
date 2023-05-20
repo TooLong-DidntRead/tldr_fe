@@ -63,6 +63,14 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
     }
   };
 
+  const getConcernCount = () => {
+    const keys = Object.keys(concernAreas)
+    return keys.reduce((acc, key) => {
+      concernAreas[key] && acc++;
+      return acc ;
+    }, 0)
+  }
+
   const getConcernAreaChecks = () => {
     const keys = Object.keys(concernAreas);
     return keys.map((key) => (
@@ -123,11 +131,12 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
                   value={selectedLibrary}
                   label="Select TOS"
                   onChange={handleLibraryChange}>
-                  {tosLibrary.map(tos => <MenuItem value={tos.tos}>{tos.service}</MenuItem>)}
+                  {tosLibrary.map(tos => <MenuItem key={tos.service} value={tos.tos}>{tos.service}</MenuItem>)}
                 </Select>
               </FormControl>
               <div className="buttons-parent">
                 <Button
+                  disabled={!(tosInput && getConcernCount())}
                   onClick={sendTOS}
                   color="primary"
                   variant="contained"
