@@ -42,16 +42,10 @@
 .summary {
   text-align: center;
   font-weight: 400;
-  padding: 1rem;
-  font-size: 1.2rem;
-}
-
-.instructions {
-  font-weight: 600;
-  color: var(--blue);
-  padding: .5rem;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  padding: 3rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 1.4rem;
 }
 
 .disclaimer {
