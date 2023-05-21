@@ -3,4 +3,4 @@ export interface ConcernShape {
   ranking: number;
   impact: string;
   actionable: string;
-}
+};
