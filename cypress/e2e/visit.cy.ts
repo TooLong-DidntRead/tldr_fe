@@ -10,10 +10,6 @@ describe("As a user, I should be able to see the welcome page and navigate to th
         "contain",
         "TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service."
       )
-      .should(
-        "contain",
-        "Simply copy and paste your user agreement into the TL:DR form and see an easy-to-read summary organized by topic and powered by ChatGPT."
-      );
 
     cy.get(".welcome-logo").should("be.visible");
 

@@ -6,33 +6,10 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
   });
 
   it("Should be able to submit a TOS and take me to the results page", () => {
-    cy.intercept(
+    cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries",
       {
-        method: "POST",
-        url: "https://4196c33d-8951-4a3a-8216-bffd37431cc2.mock.pstmn.io/api/v1/processTOS",
-      },
-      {
-        statusCode: 200,
-        body: {
-          data: [
-            {
-              title: "Liability",
-              impact:
-                "The Netflix Terms of Use outlines the subscription service that allows members to access entertainment content over the Internet on certain Internet-connected TV's, computers and other devices. It also outlines the payment method that is charged for the subscription service.",
-              actionable:
-                "The Terms of Use outlines the steps that members must take to cancel their subscription service, as well as the steps that must be taken to ensure that the subscription service is not renewed after the cancellation.",
-              ranking: 8,
-            },
-            {
-              title: "Privacy",
-              impact:
-                "Netflix Inc. states that they may collect personal information from members, including name, address, email address, payment information, and other information. They may also collect information about members' use of the service, such as the titles of movies and TV shows watched and the duration of the viewing session.",
-              actionable:
-                "Members can control the amount of personal information they provide to Netflix Inc. by adjusting their account settings. They can also control the amount of information Netflix Inc. collects about their use of the service by adjusting their privacy settings.",
-              ranking: 5,
-            },
-          ],
-        },
+        statusCode: 201,
+        fixture: "tosResponse.json",
       }
     );
 
@@ -67,27 +44,13 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
   });
 
   it("Should be able to navigate back to the home page", () => {
-    cy.intercept(
+    cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries",
       {
-        method: "POST",
-        url: "https://4196c33d-8951-4a3a-8216-bffd37431cc2.mock.pstmn.io/api/v1/processTOS",
-      },
-      {
-        statusCode: 200,
-        body: {
-          data: [
-            {
-              title: "Liability",
-              impact:
-                "The Netflix Terms of Use outlines the subscription service that allows members to access entertainment content over the Internet on certain Internet-connected TV's, computers and other devices. It also outlines the payment method that is charged for the subscription service.",
-              actionable:
-                "The Terms of Use outlines the steps that members must take to cancel their subscription service, as well as the steps that must be taken to ensure that the subscription service is not renewed after the cancellation.",
-              ranking: 8,
-            },
-          ],
-        },
+        statusCode: 201,
+        fixture: "tosResponse.json",
       }
     );
+    
     cy.get("#tos").type(
       `Netflix Terms of Use
     Netflix provides a personalized subscription service that allows our members to access entertainment content ("Netflix content") over the Internet on certain Internet-connected TV's, computers and other devices ("Netflix ready devices").`,

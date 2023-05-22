@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "title": "Liability",
+      "impact":
+        "The Netflix Terms of Use outlines the subscription service that allows members to access entertainment content over the Internet on certain Internet-connected TV's, computers and other devices. It also outlines the payment method that is charged for the subscription service.",
+      "actionable":
+        "The Terms of Use outlines the steps that members must take to cancel their subscription service, as well as the steps that must be taken to ensure that the subscription service is not renewed after the cancellation.",
+      "ranking": 8
+    },
+    {
+      "title": "Privacy",
+      "impact":
+        "Netflix Inc. states that they may collect personal information from members, including name, address, email address, payment information, and other information. They may also collect information about members' use of the service, such as the titles of movies and TV shows watched and the duration of the viewing session.",
+      "actionable":
+        "Members can control the amount of personal information they provide to Netflix Inc. by adjusting their account settings. They can also control the amount of information Netflix Inc. collects about their use of the service by adjusting their privacy settings.",
+      "ranking": 5
+    }
+  ]
+}
