@@ -40,8 +40,6 @@ export const processTOSPDF = async (file: File, concerns: string[], user: number
   concerns.forEach(concern => data.append('areas_of_focus', concern));
   user && data.append('user', user.toString())
 
-  console.log(data)
-
   const details = {
     method: "POST",
     headers: {},
