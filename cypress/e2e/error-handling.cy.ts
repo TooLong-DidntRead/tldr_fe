@@ -1,6 +1,6 @@
 describe("Error Handling", () => {
   beforeEach(() => {
-    cy.visit("/login/abc")
+    cy.visit("abc")
   });
 
   it("Should display an error page when url is not found", () => {

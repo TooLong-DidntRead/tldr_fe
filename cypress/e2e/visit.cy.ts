@@ -1,6 +1,6 @@
 describe("As a user, I should be able to see the welcome page and navigate to the home page", () => {
   beforeEach(() => {
-    cy.visit("/")
+    cy.visit("")
   })
 
   it("Should be able to see a welcome page", () => {
