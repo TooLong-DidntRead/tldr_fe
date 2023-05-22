@@ -9,9 +9,9 @@ import Avatar2 from "../../images/avatar-2.jpg";
 import Avatar3 from "../../images/avatar-3.jpg";
 
 interface HeaderProps {
-  user: number | null
-  logout: () => void
-}
+  user: number | null;
+  logout: () => void;
+};
 
 const avatars = [Avatar1, Avatar2, Avatar3];
 

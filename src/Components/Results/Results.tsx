@@ -4,8 +4,9 @@ import ConcernRow from "./ConcernRow/ConcernRow";
 import "./Results.css";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from "react-router-dom";
 
 interface ResultsProps {
@@ -14,6 +15,9 @@ interface ResultsProps {
 
 const Results = ({ concerns }: ResultsProps) => {
   const [selectedConcern, setSelectedConcern] = useState(0);
+  
+  const ratingExplanation :string = "Consumer Friendliness Rating: the progress bar represents a rating from 1 - 10. 1 being the most friendly to the business which created the ToS, 10 being the most consumer-friendly.";
+  
   const concernRows =
     concerns.map((concern, i) => {
       return (
@@ -54,18 +58,21 @@ const Results = ({ concerns }: ResultsProps) => {
                 {concerns[selectedConcern].title}
               </h3>
               <div className="meter-parent">
-                <CircularProgressbar
-                  value={concerns[selectedConcern].ranking}
-                  maxValue={10}
-                  text={`${concerns[selectedConcern].ranking}/10`}
-                  styles={buildStyles({
-                    pathColor: getMeterColor(concerns[selectedConcern].ranking),
-                    textColor: "#2E2E2E",
-                    textSize: "1.3rem",
-                    trailColor: "#d6d6d6",
-                    backgroundColor: "#3e98c7",
-                  })}
-                />
+                  <CircularProgressbar
+                    value={concerns[selectedConcern].ranking}
+                    maxValue={10}
+                    text={`${concerns[selectedConcern].ranking}/10`}
+                    styles={buildStyles({
+                      pathColor: getMeterColor(concerns[selectedConcern].ranking),
+                      textColor: "#2E2E2E",
+                      textSize: "1.3rem",
+                      trailColor: "#d6d6d6",
+                      backgroundColor: "#3e98c7",
+                    })}
+                  />
+                  <Tooltip title={ratingExplanation} tabIndex={0}>
+                    <HelpOutlineIcon sx={{color: "#0D4C92"}}/>
+                  </Tooltip>
               </div>
             </div>
             <div className="results-card-section">
