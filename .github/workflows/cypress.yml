@@ -14,8 +14,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           build: npm run build
-          start: npm start
-          
+          start: npm run start-after-120-seconds
 # name: E2E Cypress Tests
 
 # on: push
