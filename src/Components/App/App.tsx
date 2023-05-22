@@ -14,7 +14,8 @@ const App = () => {
   const [error, setError] = useState<string>("");
   const [concerns, setConcerns] = useState<ConcernShape[] | null>(null);
   const [user, setUser] = useState<number | null>(null);
-  const [tosInput, setTosInput] = useState('');
+  const [tosInput, setTosInput] = useState<string>('');
+  const [tosInputFile, setTosInputFile] = useState<File | null>(null);
   const history = useHistory();
 
   const logout = () => {
@@ -42,7 +43,9 @@ const App = () => {
             <Header logout={logout} user={user} />
             <Process
               tosInput={tosInput}
+              tosInputFile={tosInputFile}
               setTosInput={setTosInput}
+              setTosInputFile={setTosInputFile}
               setConcerns={setConcerns}
               setError={setError}
               user={user}
