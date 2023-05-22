@@ -10,15 +10,11 @@ jobs:
         uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Build and wait for completion
-        run: |
-          npm run build &
-          npx wait-on http://localhost:3000
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-#         build: npm run build
-          start: npm start
+          build: npm run build
+          start: npm run start-after-100-seconds
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
