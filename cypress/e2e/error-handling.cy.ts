@@ -1,7 +1,7 @@
 describe("Error Handling", () => {
 
   before(() => {
-    cy.wait(30000)
+    cy.wait(20000)
   })
 
   it("Should be able to handle a bad response", () => {
@@ -38,7 +38,7 @@ describe("Error Handling", () => {
   });
 
   it("Should display an error page when url is not found, and nav back to the home page", () => {
-    cy.visit("abc")
+    cy.visit("/abc")
     cy.get(".error-card")
       .should("be.visible")
       .should("contain", "The page you're looking for doesn't exist");
