@@ -51,7 +51,6 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
       const TOSinfo = await processTOS(
         tosInput.replace('"', "'"),
         concerns,
-        setError,
         user
       );
       setConcerns(TOSinfo.data);
@@ -59,6 +58,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
       history.push("/results");
     } catch (error: any) {
       const errorMessage: string = error.message;
+      errorMessage ? setError(errorMessage) : setError("unexpected error 🙃");
       setError(errorMessage);
     };
   };
@@ -102,13 +102,13 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
         const concerns = Object.keys(concernAreas).filter(
           (key) => concernAreas[key]
         );
-        const TOSinfo = await processTOSPDF(file, concerns, setError, 1);
+        const TOSinfo = await processTOSPDF(file, concerns, user);
         setConcerns(TOSinfo.data);
         setLoading(false);
         history.push("/results");
       } catch (error: any) {
         const errorMessage: string = error.message;
-        setError(errorMessage);
+        errorMessage ? setError(errorMessage) : setError("unexpected error 🙃")
       };
   }
 

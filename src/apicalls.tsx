@@ -4,7 +4,7 @@ interface TOSReturn {
   data: ConcernShape[];
 };
 
-const processTOS = async (tos: string, concerns: string[], setError: Function, user: number | null): Promise<TOSReturn> => {
+const processTOS = async (tos: string, concerns: string[], user: number | null): Promise<TOSReturn> => {
   
   const details = {
     method: "POST",
@@ -34,11 +34,11 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
 };
 
 
-export const processTOSPDF = async (file: File, concerns: string[], setError: Function, user: number): Promise<TOSReturn> => {
+export const processTOSPDF = async (file: File, concerns: string[], user: number | null): Promise<TOSReturn> => {
   var data = new FormData()
   data.append('file', file)
   concerns.forEach(concern => data.append('areas_of_focus', concern));
-  data.append('user', user.toString())
+  user && data.append('user', user.toString())
 
   console.log(data)
 
