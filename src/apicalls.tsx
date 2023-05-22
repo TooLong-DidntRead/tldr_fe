@@ -4,7 +4,7 @@ interface TOSReturn {
   data: ConcernShape[];
 };
 
-const processTOS = async (tos: string, concerns: string[], setError: Function, user: number | null): Promise<TOSReturn> => {
+const processTOS = async (tos: string | File, concerns: string[], setError: Function, user: number | null): Promise<TOSReturn> => {
   
   const details = {
     method: "POST",
