@@ -6,7 +6,7 @@ describe("Error Handling", () => {
         statusCode: 400
       }
     );
-    cy.wait(60000)
+    cy.wait(15000)
     cy.visit("")
     cy.get(".MuiButtonBase-root").click();
     cy.get(":nth-child(1) > #avatar-img > .MuiAvatar-img").click();
@@ -33,26 +33,20 @@ describe("Error Handling", () => {
       .should("contain", "Uh-Oh, There's been an error");
   });
 
-  // beforeEach(() => {
-  //   cy.visit("abc")
-  // });
+  beforeEach(() => {
+    cy.visit("abc")
+  });
 
-  // it("Should display an error page when url is not found", () => {
-  //   cy.get(".error-card")
-  //     .should("be.visible")
-  //     .should("contain", "The page you're looking for doesn't exist");
-  // });
+  it("Should display an error page when url is not found", () => {
+    cy.get(".error-card")
+      .should("be.visible")
+      .should("contain", "The page you're looking for doesn't exist");
+  });
 
-  // it("Should display an error page when url is not found", () => {
-  //   cy.get(".error-card")
-  //     .should("be.visible")
-  //     .should("contain", "The page you're looking for doesn't exist");
-  // });
-
-  // it("Should navigate back to a working page when button is clicked", () => {
-  //   cy.get(".MuiButtonBase-root").click();
-  //   cy.get(".error-card").should("not.exist");
-  //   cy.get(".welcome-card").should("be.visible");
-  // });
+  it("Should navigate back to a working page when button is clicked", () => {
+    cy.get(".MuiButtonBase-root").click();
+    cy.get(".error-card").should("not.exist");
+    cy.get(".welcome-card").should("be.visible");
+  });
 });
 
