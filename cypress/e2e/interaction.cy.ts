@@ -1,6 +1,6 @@
 describe("As a user, I should recieve a summary of the terms that is easy to read and understand", () => {
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("localhost:3000")
     cy.get(".MuiButtonBase-root").click();
     cy.get(":nth-child(1) > #avatar-img > .MuiAvatar-img").click();
   });
@@ -50,7 +50,7 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
         fixture: "tosResponse.json",
       }
     );
-    
+
     cy.get("#tos").type(
       `Netflix Terms of Use
     Netflix provides a personalized subscription service that allows our members to access entertainment content ("Netflix content") over the Internet on certain Internet-connected TV's, computers and other devices ("Netflix ready devices").`,
