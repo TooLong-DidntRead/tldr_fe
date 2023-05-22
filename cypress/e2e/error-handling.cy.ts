@@ -1,8 +1,8 @@
 describe("Error Handling", () => {
 
-  before(() => {
-    cy.wait(60000)
-  })
+  // before(() => {
+  //   cy.wait(60000)
+  // })
 
   it("Should be able to handle a bad response", () => {
     cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries",
