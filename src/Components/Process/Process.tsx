@@ -22,13 +22,15 @@ import { tosLibrary } from "../../tosLibrary";
 
 interface FormProps {
   tosInput: string;
+  tosInputFile: File | null;
   setTosInput: Dispatch<React.SetStateAction<string>>;
+  setTosInputFile: React.Dispatch<React.SetStateAction<File | null>>;
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
   setError: Dispatch<React.SetStateAction<string>>;
   user: number | null;
 }
 
-const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps) => {
+const Process = ({tosInput, tosInputFile, setTosInput, setTosInputFile, setConcerns, setError, user}: FormProps) => {
   const [loading, setLoading] = useState(false);
   const [selectedLibrary, setSelectedLibrary] = useState('');
   const [concernAreas, setConcernAreas] = useState<{ [key: string]: boolean }>({
@@ -48,13 +50,24 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
       const concerns = Object.keys(concernAreas).filter(
         (key) => concernAreas[key]
       );
-      const TOSinfo = await processTOS(
-        tosInput.replace('"', "'"),
-        concerns,
-        setError,
-        user
-      );
-      setConcerns(TOSinfo.data);
+
+      if(tosInput){
+        const TOSinfo = await processTOS(
+          tosInput.replace('"', "'"),
+          concerns,
+          setError,
+          user
+        );
+        setConcerns(TOSinfo.data);
+      } else if (tosInputFile){
+        const TOSinfo = await processTOS(
+          tosInputFile,
+          concerns,
+          setError,
+          user
+        );
+        setConcerns(TOSinfo.data);
+      }
       setLoading(false);
       history.push("/results");
     } catch (error: any) {
@@ -95,6 +108,21 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
     setSelectedLibrary(event.target.value);
     setTosInput(event.target.value);
   };
+
+  const uploadFile = (event:any) => {
+    console.log('event.target.value', event.target.value)
+    const file = event.target.files[0]
+    console.log('file', file)
+    setTosInputFile(file)
+    
+    // const fileReader = new FileReader();
+    // fileReader.readAsDataURL(file)
+    // fileReader.onload = () => {
+    //   // const blob = new Blob(file)
+    //   // console.log('blob', blob)
+    //   console.log('reader result', fileReader.result)
+    // }
+  }
 
   return (
     <main className="process-main">
@@ -144,11 +172,12 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
                   startIcon={<CheckRoundedIcon />}
                 > Process
                 </Button>
-                <Button
+                <input type="file" id="upload" onChange={uploadFile}/>
+                {/* <Button
                   color="primary"
                   variant="outlined"
                   startIcon={<UploadFileIcon />}> Upload
-                </Button>
+                </Button> */}
               </div>
             </div>
           </>
