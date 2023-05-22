@@ -1,6 +1,38 @@
+# name: Cypress Tests
+
+# on: push
+
+# jobs:
+#   cypress-run:
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       # Install NPM dependencies, cache them correctly
+#       # and run all Cypress tests
+#       - name: Cypress run
+#         uses: cypress-io/github-action@v5
+#         with:
+#           build: npm run build
+#           start: npm run start-after-120-seconds
+#           wait-on: "http://localhost:3000"
+#           wait-on-timeout: 130
+#       - uses: actions/upload-artifact@v3
+#         if: failure()
+#         with:
+#           name: cypress-screenshots
+#           path: cypress/screenshots
+#       # Test run video was always captured, so this action uses "always()" condition
+#       - uses: actions/upload-artifact@v3
+#         if: always()
+#         with:
+#           name: cypress-videos
+#           path: cypress/videos
+
 name: Cypress Tests
 
-on: push
+on:
+  push
 
 jobs:
   cypress-run:
@@ -8,8 +40,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+
+      - name: Delay execution
+        run: sleep 120
+
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
@@ -17,12 +51,13 @@ jobs:
           start: npm run start-after-120-seconds
           wait-on: "http://localhost:3000"
           wait-on-timeout: 130
+
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      # Test run video was always captured, so this action uses "always()" condition
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
