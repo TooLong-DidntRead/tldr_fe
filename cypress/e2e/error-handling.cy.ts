@@ -37,15 +37,15 @@ describe("Error Handling", () => {
       .should("contain", "Uh-Oh, There's been an error");
   });
 
-  // it("Should display an error page when url is not found, and nav back to the home page", () => {
-  //   cy.wait(5000)
-  //   cy.visit("/abc")
-  //   cy.get(".error-card")
-  //     .should("be.visible")
-  //     .should("contain", "The page you're looking for doesn't exist");
-  //   cy.get(".MuiButtonBase-root").click();
-  //   cy.get(".error-card").should("not.exist");
-  //   cy.get(".welcome-card").should("be.visible");
-  // });
+  it("Should display an error page when url is not found, and nav back to the home page", () => {
+    cy.wait(1000)
+    cy.visit("/abc")
+    cy.get(".error-card")
+      .should("be.visible")
+      .should("contain", "The page you're looking for doesn't exist");
+    cy.get(".MuiButtonBase-root").click();
+    cy.get(".error-card").should("not.exist");
+    cy.get(".welcome-card").should("be.visible");
+  });
 });
 
