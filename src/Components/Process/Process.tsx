@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import processTOS from "../../apicalls";
+import processTOS, { processTOSPDF } from "../../apicalls";
 import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
@@ -96,6 +96,22 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
     setTosInput(event.target.value);
   };
 
+  const processPDF = async (file: File) => {
+      try {
+        setLoading(true);
+        const concerns = Object.keys(concernAreas).filter(
+          (key) => concernAreas[key]
+        );
+        const TOSinfo = await processTOSPDF(file, concerns, setError, 1);
+        setConcerns(TOSinfo.data);
+        setLoading(false);
+        history.push("/results");
+      } catch (error: any) {
+        const errorMessage: string = error.message;
+        setError(errorMessage);
+      };
+  }
+
   return (
     <main className="process-main">
       <h1 className="heading">Terms of Service Processor</h1>
@@ -104,14 +120,17 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
       <form className="form-card">
         {loading ? (
           <>
-            <h3 className="form-heading"> Processing Terms of Service, Please Wait</h3>
+            <h3 className="form-heading">Processing Terms of Service, Please Wait</h3>
             <div className="loading-parent">
               <CircularProgress id="loading-icon" />
             </div>
           </>
         ) : (
           <>
-            <h3 className="form-heading">Paste, upload, or select your Terms of Service from a list of popular services.</h3>
+            <h3 className="form-heading">
+              Paste, upload, or select your Terms of Service from a list of
+              popular services.
+            </h3>
             <TextField
               value={tosInput}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,15 +142,20 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
             />
             <FormGroup row>{getConcernAreaChecks()}</FormGroup>
             <div className="form-footer">
-              <FormControl sx={{ m: 0, minWidth: 160 }} size="small" >
+              <FormControl sx={{ m: 0, minWidth: 160 }} size="small">
                 <InputLabel id="tos-library-label">TOS LIbrary</InputLabel>
                 <Select
                   labelId="tos-library-label"
                   id="tos-library-select"
                   value={selectedLibrary}
                   label="Select TOS"
-                  onChange={handleLibraryChange}>
-                  {tosLibrary.map(tos => <MenuItem key={tos.service} value={tos.tos}>{tos.service}</MenuItem>)}
+                  onChange={handleLibraryChange}
+                >
+                  {tosLibrary.map((tos) => (
+                    <MenuItem key={tos.service} value={tos.tos}>
+                      {tos.service}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <div className="buttons-parent">
@@ -141,14 +165,28 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
                   color="primary"
                   variant="contained"
                   disableElevation
-                  startIcon={<CheckRoundedIcon />}
-                > Process
-                </Button>
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  startIcon={<UploadFileIcon />}> Upload
-                </Button>
+                  startIcon={<CheckRoundedIcon />}>Process</Button>
+                <input
+                  disabled={!getConcernCount()}
+                  accept="application/pdf"
+                  style={{ display: "none" }}
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => {
+                    if(e.target.files) {
+                      processPDF(e.target.files[0])
+                    }
+                  }}
+                />
+                <label htmlFor="contained-button-file">
+                  <Button
+                    disabled={!getConcernCount()}
+                    component="span"
+                    color="primary"
+                    variant="outlined"
+                    startIcon={<UploadFileIcon />}>Upload</Button>
+                </label>
               </div>
             </div>
           </>
