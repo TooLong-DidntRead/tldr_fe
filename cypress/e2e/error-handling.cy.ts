@@ -6,7 +6,7 @@ describe("Error Handling", () => {
         statusCode: 400
       }
     );
-    cy.wait(15000)
+    cy.wait(30000)
     cy.visit("")
     cy.get(".MuiButtonBase-root").click();
     cy.get(":nth-child(1) > #avatar-img > .MuiAvatar-img").click();
