@@ -134,7 +134,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
               }}
               id="tos"
               multiline
-              rows={8}
+              rows={7}
             />
             <FormGroup row>{getConcernAreaChecks()}</FormGroup>
             <div className="form-footer">
