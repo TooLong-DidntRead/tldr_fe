@@ -8,7 +8,7 @@ import Results from "../Results/Results";
 import { ConcernShape } from "../../interfaces";
 import Welcome from "../Welcome/Welcome";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
-import NotFound from "../NotFound/NotFound";
+import NotFound from "../NotFound/NotFound";;
 
 const App = () => {
   const [error, setError] = useState<string>("");

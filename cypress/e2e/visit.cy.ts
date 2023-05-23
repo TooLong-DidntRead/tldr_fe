@@ -8,7 +8,7 @@ describe("As a user, I should be able to see the welcome page and navigate to th
       .should("contain", "Welcome to")
       .should(
         "contain",
-        "TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service."
+        "A ChatGPT-powered app that helps everyday web surfers navigate the intentionally ambiguous realm of Terms of Service."
       );
 
     cy.get(".welcome-logo").should("be.visible");

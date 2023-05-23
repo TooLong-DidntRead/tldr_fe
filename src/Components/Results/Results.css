@@ -61,11 +61,14 @@
 }
 
 .meter-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   width: 80px;
-  height: 80px;
+  height: 100px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .results-lower {
     flex-direction: column;
   }
@@ -81,6 +84,6 @@
 
   .meter-parent {
     width: 60px;
-    height: 60px;
+    height: 80px;
   }
 }

@@ -28,12 +28,12 @@
   font-size: 2rem;
   font-style: oblique;
   letter-spacing: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .welcome-logo {
-  width: 40%;
+  max-width: 300px;
   height: auto;
   border-radius: 4px;
   margin-bottom: 1rem;
@@ -42,9 +42,8 @@
 .summary {
   text-align: center;
   font-weight: 400;
-  padding: 3rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   font-size: 1.4rem;
 }
 
@@ -53,4 +52,24 @@
   font-style: italic;
   font-size: .9rem;
   margin-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .welcome-h1 {
+    font-size: 1.3rem;
+    letter-spacing: 0.2rem;
+  }
+  .welcome-logo {
+    max-width: 200px;
+  }
+  .welcome-card {
+    padding: 1.5rem;
+  }
+
+  .summary {
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
 }

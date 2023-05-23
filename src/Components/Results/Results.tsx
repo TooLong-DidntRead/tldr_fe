@@ -72,7 +72,7 @@ const Results = ({ concerns }: ResultsProps) => {
                     })}
                   />
                   <Tooltip title={ratingExplanation} tabIndex={0}>
-                    <HelpOutlineIcon sx={{color: "#0D4C92"}}/>
+                    <HelpOutlineIcon sx={{color: "#0D4C92", fontSize: 16}} />
                   </Tooltip>
               </div>
             </div>
