@@ -11,7 +11,7 @@ const Welcome = () => {
       <div className="welcome-card">
         <h1 className="welcome-h1">~ Welcome to ~</h1>
         <img className="welcome-logo" src={logo_sm} alt="logo" />
-        <h2 className="summary">TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service.</h2>
+        <h2 className="summary">A ChatGPT-powered app that helps everyday web surfers navigate the intentionally ambiguous realm of Terms of Service.</h2>
        <Link to="/login">
           <Button
             disableElevation
@@ -19,7 +19,6 @@ const Welcome = () => {
             variant="contained"
           >Begin Demo</Button>
        </Link> 
-        <p className="disclaimer">The information provided on this website is collected and analyzed by third party AI technology and does not, and is not intended to, constitute legal advice; instead, all information, content, and materials available on this site are for general informational and entertainment purposes only.</p>
       </div>
     </main>
   )
