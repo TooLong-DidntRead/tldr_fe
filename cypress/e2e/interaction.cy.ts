@@ -39,6 +39,8 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
       .should("have.length", 2)
       .should("contain", "Liability")
       .should("contain", "Privacy");
+
+    cy.get(".footer").should("be.visible");
   });
 
   it("Should be able to navigate back to the home page", () => {
