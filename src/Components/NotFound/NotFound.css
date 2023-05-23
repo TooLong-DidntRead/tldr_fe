@@ -8,9 +8,10 @@
 }
 
 .error-card {
-  width: 50%;
-  height: 60%;
+  min-width: 300px;
+  max-width: 600px;
   display: flex;
+  gap: 1.2rem;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -22,6 +23,13 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
+
+
 .error-title, .error-message, .error-content {
-  padding: .8rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.error-title {
+  font-size: 1.5rem;
 }

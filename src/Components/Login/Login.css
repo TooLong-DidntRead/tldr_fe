@@ -49,3 +49,20 @@
 .avatar-name {
   margin: 5px 0 0;
 }
+
+
+@media screen and (max-width: 600px) {
+  .login-heading {
+    font-size: 1.4rem;
+  }
+  #avatar-img {
+    border: 5px solid #fff;
+    width: 130px;
+    height: 130px;
+  }
+
+  .login-main {
+    justify-content: auto;
+  }
+
+}
