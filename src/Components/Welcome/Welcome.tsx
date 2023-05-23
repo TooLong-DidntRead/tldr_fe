@@ -11,7 +11,7 @@ const Welcome = () => {
       <div className="welcome-card">
         <h1 className="welcome-h1">~ Welcome to ~</h1>
         <img className="welcome-logo" src={logo_sm} alt="logo" />
-        <h2 className="summary">TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service.</h2>
+        <h2 className="summary">TL:DR is an application made to assist the average web surfer in navigating the intentionally ambiguous world of Terms of Service.</h2>
        <Link to="/login">
           <Button
             disableElevation

@@ -23,7 +23,9 @@ Our backend team utilized DJango and prompt engineering to process the data inpu
 1. Copy and paste the generated `localServer` address that your terminal provides into your browser address bar.
 
 ## Preview of App:
-![]()
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODg0ODlmMmQzY2I1ODcyMjkzNzllZTVkYmU5YzIxYWQ0YWIzYWUxYiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/FXq01ITQs8eXz2ZyCL/giphy.gif)
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTM0ZDVhNzg2MTc5MzYyMjY3MmY1YWE5NTY0YjcxNjBiZmFiZjdkMyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/mnpSbv32GEN3KKsO8o/giphy.gif)
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGQwZWQ2OTk0MTY2ZjU2ZjY3MGQ2NmUxZWE2YTRkZTA0NDQ5NGE2ZiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/e0KMbhiokIJXkKC9cJ/giphy.gif)
 
 ## Technologies Used: 
   - React 
