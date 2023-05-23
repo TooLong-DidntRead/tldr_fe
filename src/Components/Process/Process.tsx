@@ -9,7 +9,6 @@ import { ConcernShape } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import {
   Checkbox,
-  CircularProgress,
   FormControl,
   FormControlLabel,
   FormGroup,
@@ -19,6 +18,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { tosLibrary } from "../../tosLibrary";
+import Loading from "./Loading/Loading";
 import Footer from "../Footer/Footer";
 
 interface FormProps {
@@ -117,17 +117,12 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
     <main className="process-main">
       <h1 className="heading">Terms of Service Processor</h1>
       <p className="sub-heading">Understand what's important to you.</p>
-
-      <form className="form-card">
         {loading ? (
           <>
-            <h3 className="form-heading">Processing Terms of Service, Please Wait</h3>
-            <div className="loading-parent">
-              <CircularProgress id="loading-icon" />
-            </div>
+            <Loading concerns={Object.keys(concernAreas).filter(key => concernAreas[key])}/>
           </>
         ) : (
-          <>
+          <form className="form-card">
             <h3 className="form-heading">
               Paste, upload, or select your Terms of Service from a list of
               popular services.
@@ -190,9 +185,8 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
                 </label>
               </div>
             </div>
-          </>
+          </form>
         )}
-      </form>
       <Footer />
     </main>
   );
