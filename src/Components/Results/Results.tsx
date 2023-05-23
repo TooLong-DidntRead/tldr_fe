@@ -8,6 +8,7 @@ import { Button, Tooltip } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 interface ResultsProps {
   concerns: ConcernShape[];
@@ -86,6 +87,7 @@ const Results = ({ concerns }: ResultsProps) => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

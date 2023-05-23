@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { tosLibrary } from "../../tosLibrary";
 import Loading from "./Loading/Loading";
+import Footer from "../Footer/Footer";
 
 interface FormProps {
   tosInput: string;
@@ -116,8 +117,6 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
     <main className="process-main">
       <h1 className="heading">Terms of Service Processor</h1>
       <p className="sub-heading">Understand what's important to you.</p>
-
-      
         {loading ? (
           <>
             <Loading concerns={Object.keys(concernAreas).filter(key => concernAreas[key])}/>
@@ -188,6 +187,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
             </div>
           </form>
         )}
+      <Footer />
     </main>
   );
 };

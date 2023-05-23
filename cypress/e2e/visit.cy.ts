@@ -1,7 +1,7 @@
 describe("As a user, I should be able to see the welcome page and navigate to the home page", () => {
   beforeEach(() => {
-    cy.visit("")
-  })
+    cy.visit("");
+  });
 
   it("Should be able to see a welcome page", () => {
     cy.get(".welcome-card")
@@ -9,7 +9,7 @@ describe("As a user, I should be able to see the welcome page and navigate to th
       .should(
         "contain",
         "TL:DR is an application made to assist the average web surfer in navigating the intentionally ambigous world of Terms of Service."
-      )
+      );
 
     cy.get(".welcome-logo").should("be.visible");
 
@@ -71,5 +71,6 @@ describe("As a user, I should be able to see the welcome page and navigate to th
     cy.get(".form-footer").children().should("have.length", 2);
     cy.get(".MuiButton-contained").contains("Process");
     cy.get(".MuiButton-outlined").contains("Upload");
+    cy.get(".footer").should("be.visible");
   });
 });
