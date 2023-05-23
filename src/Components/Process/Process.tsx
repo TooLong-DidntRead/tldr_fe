@@ -20,6 +20,7 @@ import {
 import { tosLibrary } from "../../tosLibrary";
 import Loading from "./Loading/Loading";
 import Footer from "../Footer/Footer";
+import NotFound from "../NotFound/NotFound";
 
 interface FormProps {
   tosInput: string;

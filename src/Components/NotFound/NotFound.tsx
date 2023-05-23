@@ -19,8 +19,10 @@ const NotFound = ({error, setError}: NotFoundProps) => {
     <main className="error-main">
       <div className="error-card">
         <h1 className="error-title">Uh-Oh, There's been an error</h1>
-        <h2 className="error-message">Message:</h2>
-        {error ? <h3 className="error-content">{error}</h3> : <h3 className="error-content">The page you're looking for doesn't exist</h3>}
+        <div>
+          <h2 className="error-message">Message:</h2>
+          {error ? <h3 className="error-content">{error}</h3> : <h3 className="error-content">The page you're looking for doesn't exist</h3>}
+        </div>
         <Link to="/"><Button
                 onClick={resetError}
                 color="primary"
