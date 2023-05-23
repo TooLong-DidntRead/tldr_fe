@@ -27,8 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open",
-    "start-after-120-seconds": "your-command-or-script-here"
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": [
