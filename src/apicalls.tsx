@@ -4,7 +4,7 @@ interface TOSReturn {
   data: ConcernShape[];
 };
 
-const processTOS = async (tos: string, concerns: string[], setError: Function, user: number | null): Promise<TOSReturn> => {
+const processTOS = async (tos: string, concerns: string[], user: number | null): Promise<TOSReturn> => {
   
   const details = {
     method: "POST",
@@ -32,5 +32,32 @@ const processTOS = async (tos: string, concerns: string[], setError: Function, u
 
   return response.json();
 };
+
+
+export const processTOSPDF = async (file: File, concerns: string[], user: number | null): Promise<TOSReturn> => {
+  var data = new FormData()
+  data.append('file', file)
+  concerns.forEach(concern => data.append('areas_of_focus', concern));
+  user && data.append('user', user.toString())
+
+  const details = {
+    method: "POST",
+    headers: {},
+    body: data
+  };
+  
+  const response = await fetch(
+    "https://tldr-api.onrender.com/api/v1/queries",
+    details
+  );
+
+  if (!response.ok) {
+    const res = await response.json();
+    throw new Error(res.statusText);
+  };
+
+  return response.json();
+};
+
 
 export default processTOS;
