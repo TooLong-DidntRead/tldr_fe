@@ -11,7 +11,7 @@ const Welcome = () => {
       <div className="welcome-card">
         <h1 className="welcome-h1">~ Welcome to ~</h1>
         <img className="welcome-logo" src={logo_sm} alt="logo" />
-        <h2 className="summary">A ChatGPT-powered app that helps everyday web surfers navigate the intentionally ambiguous world of Terms of Service.</h2>
+        <h2 className="summary">A ChatGPT-powered app that helps everyday web surfers navigate the intentionally ambiguous realm of Terms of Service.</h2>
        <Link to="/login">
           <Button
             disableElevation
