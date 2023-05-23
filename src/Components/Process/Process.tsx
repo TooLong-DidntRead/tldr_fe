@@ -19,6 +19,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { tosLibrary } from "../../tosLibrary";
+import Footer from "../Footer/Footer";
 
 interface FormProps {
   tosInput: string;
@@ -192,6 +193,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
           </>
         )}
       </form>
+      <Footer />
     </main>
   );
 };
