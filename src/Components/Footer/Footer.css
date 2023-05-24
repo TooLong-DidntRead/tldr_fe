@@ -1,10 +1,10 @@
 footer {
-  max-width: 650px;
-  margin-top: 2rem;
+  max-width: 600px;
+  margin-top: 3rem;
 }
 
 .footer-text {
   color: black;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
