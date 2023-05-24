@@ -12,6 +12,7 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
+  FormLabel,
   InputLabel,
   MenuItem,
   Select,
@@ -118,9 +119,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
       <h1 className="heading">Terms of Service Processor</h1>
       <p className="sub-heading">Understand what's important to you.</p>
         {loading ? (
-          <>
             <Loading concerns={Object.keys(concernAreas).filter(key => concernAreas[key])}/>
-          </>
         ) : (
           <form className="form-card">
             <h3 className="form-heading">
@@ -136,10 +135,13 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
               multiline
               rows={7}
             />
-            <FormGroup row>{getConcernAreaChecks()}</FormGroup>
+            <FormControl sx={{ m: 0 }} component="fieldset" variant="standard">
+              <FormLabel component="legend">Select Area(s) of Concern</FormLabel>
+              <FormGroup row>{getConcernAreaChecks()}</FormGroup>
+            </FormControl>
             <div className="form-footer">
               <FormControl sx={{ m: 0, minWidth: 160 }} size="small">
-                <InputLabel id="tos-library-label">TOS LIbrary</InputLabel>
+                <InputLabel id="tos-library-label">TOS Library</InputLabel>
                 <Select
                   labelId="tos-library-label"
                   id="tos-library-select"

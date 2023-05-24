@@ -17,6 +17,9 @@ const theme = createTheme({
       secondary: {
         main: '#59C1BD'
       }
+    },
+    typography: {
+      fontFamily: `'Montserrat', sans-serif`
     }
   });
 

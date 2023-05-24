@@ -34,7 +34,7 @@ const App = () => {
             <Welcome />
           </Route>
           <Route exact path="/login">
-            <Login setUser={setUser} />
+            <Login setUser={setUser} setTosInput={setTosInput} />
           </Route>
           <Route exact path="/process">
           {user ? (
