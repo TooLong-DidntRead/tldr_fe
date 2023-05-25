@@ -8,15 +8,13 @@ import { useHistory } from "react-router-dom";
 
 interface LoginProps {
   setUser: React.Dispatch<React.SetStateAction<number | null>>;
-  setTosInput: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Login = ({setUser, setTosInput}:LoginProps) => {
+const Login = ({setUser}:LoginProps) => {
   let history = useHistory();
 
   const loginUser = (id:number) => {
     history.push("/process");
-    setTosInput('');
     setUser(id);
   };
 

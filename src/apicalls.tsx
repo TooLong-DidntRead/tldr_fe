@@ -23,11 +23,8 @@ const processTOS = async (tos: string, concerns: string[], user: number | null):
     details
   );
 
-  console.log(response)
-
   if (!response.ok) {
     const res = await response.json();
-    console.log(res)
     throw new Error(res.statusText);
   };
 
