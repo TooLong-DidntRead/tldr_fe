@@ -19,7 +19,7 @@ const processTOS = async (tos: string, concerns: string[], user: number | null):
   };
 
   const response = await fetch(
-    "https://tldr-api.onrender.com/api/v1/queries",
+    "https://ec2-3-18-245-190.us-east-2.compute.amazonaws.com/api/v1/queries",
     details
   );
 
@@ -45,7 +45,7 @@ export const processTOSPDF = async (file: File, concerns: string[], user: number
   };
   
   const response = await fetch(
-    "https://tldr-api.onrender.com/api/v1/queries",
+    "https://ec2-3-18-245-190.us-east-2.compute.amazonaws.com/api/v1/queries",
     details
   );
 
