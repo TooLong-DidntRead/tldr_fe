@@ -2,6 +2,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 const Layout = ({ logout, user, children }) => {
+  // TODO - add types
   return (
     <>
       <Header logout={logout} user={user} />
