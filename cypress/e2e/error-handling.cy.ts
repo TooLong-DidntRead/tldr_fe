@@ -1,7 +1,7 @@
 describe("Error Handling", () => {
 
   before(() => {
-    cy.wait(5000)
+    cy.wait(60000)
   })
 
   it("Should be able to handle a bad response", () => {
