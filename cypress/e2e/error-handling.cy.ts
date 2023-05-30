@@ -5,7 +5,7 @@ describe("Error Handling", () => {
   })
 
   it("Should be able to handle a bad response", () => {
-    cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries",
+    cy.intercept("POST", "https://ec2-3-18-245-190.us-east-2.compute.amazonaws.com/api/v1/queries",
       {
         statusCode: 400
       }

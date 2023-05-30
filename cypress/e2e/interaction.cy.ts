@@ -6,7 +6,7 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
   });
 
   it("Should be able to submit a TOS and take me to the results page", () => {
-    cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries", {
+    cy.intercept("POST", "https://ec2-3-18-245-190.us-east-2.compute.amazonaws.com/api/v1/queries", {
       statusCode: 201,
       fixture: "tosResponse.json",
     });
@@ -44,7 +44,7 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
   });
 
   it("Should be able to navigate back to the home page", () => {
-    cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries", {
+    cy.intercept("POST", "https://ec2-3-18-245-190.us-east-2.compute.amazonaws.com/api/v1/queries", {
       statusCode: 201,
       fixture: "tosResponse.json",
     });
@@ -72,7 +72,7 @@ describe("As a user, I should recieve a summary of the terms that is easy to rea
   });
 
   it("Should be able to choose from a common TOS to add to my form and submit it", () => {
-    cy.intercept("POST", "https://tldr-api.onrender.com/api/v1/queries", {
+    cy.intercept("POST", "https://ec2-3-18-245-190.us-east-2.compute.amazonaws.com/api/v1/queries", {
       statusCode: 201,
       fixture: "tosResponse.json",
     });
