@@ -19,8 +19,10 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { tosLibrary } from "../../tosLibrary";
-import Loading from "./Loading/Loading";
+import Loading from "../Loading/Loading";
 import Footer from "../Footer/Footer";
+import ProcessHeader from "./ProcessHeader";
+import ProcessForm from "./ProcessForm";
 
 interface FormProps {
   tosInput: string;
@@ -30,16 +32,22 @@ interface FormProps {
   user: number | null;
 }
 
-const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps) => {
+const Process = ({
+  tosInput,
+  setTosInput,
+  setConcerns,
+  setError,
+  user,
+}: FormProps) => {
   const [loading, setLoading] = useState(false);
-  const [selectedLibrary, setSelectedLibrary] = useState('');
+  const [selectedLibrary, setSelectedLibrary] = useState("");
   const [concernAreas, setConcernAreas] = useState<{ [key: string]: boolean }>({
     Privacy: false,
     Security: false,
     Copyright: false,
     Liability: false,
     Cancellation: false,
-    Payment: false
+    Payment: false,
   });
 
   const history = useHistory();
@@ -62,14 +70,14 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
       const errorMessage: string = error.message;
       errorMessage ? setError(errorMessage) : setError("unexpected error 🙃");
       setError(errorMessage);
-    };
+    }
   };
 
   const getConcernCount = () => {
     const keys = Object.keys(concernAreas);
     return keys.reduce((acc, key) => {
       concernAreas[key] && acc++;
-      return acc ;
+      return acc;
     }, 0);
   };
 
@@ -89,9 +97,9 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
   };
 
   const handleTOSChange = (tos: string) => {
-    setSelectedLibrary('');
+    setSelectedLibrary("");
     setTosInput(tos);
-  }
+  };
 
   const handleLibraryChange = (event: SelectChangeEvent) => {
     setSelectedLibrary(event.target.value);
@@ -99,97 +107,33 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps
   };
 
   const processPDF = async (file: File) => {
-      try {
-        setLoading(true);
-        const concerns = Object.keys(concernAreas).filter(
-          (key) => concernAreas[key]
-        );
-        const TOSinfo = await processTOSPDF(file, concerns, user);
-        setConcerns(TOSinfo.data);
-        setLoading(false);
-        history.push("/results");
-      } catch (error: any) {
-        const errorMessage: string = error.message;
-        errorMessage ? setError(errorMessage) : setError("unexpected error 🙃")
-      };
-  }
+    try {
+      setLoading(true);
+      const concerns = Object.keys(concernAreas).filter(
+        (key) => concernAreas[key]
+      );
+      const TOSinfo = await processTOSPDF(file, concerns, user);
+      setConcerns(TOSinfo.data);
+      setLoading(false);
+      history.push("/results");
+    } catch (error: any) {
+      const errorMessage: string = error.message;
+      errorMessage ? setError(errorMessage) : setError("unexpected error 🙃");
+    }
+  };
 
   return (
     <main className="process-main">
-      <h1 className="heading">Terms of Service Processor</h1>
-      <p className="sub-heading">Understand what's important to you.</p>
-        {loading ? (
-            <Loading concerns={Object.keys(concernAreas).filter(key => concernAreas[key])}/>
-        ) : (
-          <form className="form-card">
-            <h3 className="form-heading">
-              Paste, upload, or select your Terms of Service from a list of
-              popular services.
-            </h3>
-            <TextField
-              value={tosInput}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                handleTOSChange(event.target.value);
-              }}
-              id="tos"
-              multiline
-              rows={7}
-            />
-            <FormControl sx={{ m: 0 }} component="fieldset" variant="standard">
-              <FormLabel component="legend">Select Area(s) of Concern</FormLabel>
-              <FormGroup row>{getConcernAreaChecks()}</FormGroup>
-            </FormControl>
-            <div className="form-footer">
-              <FormControl sx={{ m: 0, minWidth: 160 }} size="small">
-                <InputLabel id="tos-library-label">TOS Library</InputLabel>
-                <Select
-                  labelId="tos-library-label"
-                  id="tos-library-select"
-                  value={selectedLibrary}
-                  label="Select TOS"
-                  onChange={handleLibraryChange}
-                >
-                  {tosLibrary.map((tos) => (
-                    <MenuItem key={tos.service} value={tos.tos}>
-                      {tos.service}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <div className="buttons-parent">
-                <Button
-                  disabled={!(tosInput && getConcernCount())}
-                  onClick={sendTOS}
-                  color="primary"
-                  variant="contained"
-                  disableElevation
-                  startIcon={<CheckRoundedIcon />}>Process</Button>
-                <input
-                  disabled={!getConcernCount()}
-                  accept="application/pdf"
-                  style={{ display: "none" }}
-                  id="contained-button-file"
-                  multiple
-                  type="file"
-                  onChange={(e) => {
-                    if(e.target.files) {
-                      processPDF(e.target.files[0])
-                    }
-                  }}
-                />
-                <label htmlFor="contained-button-file">
-                  <Button
-                    disabled={!getConcernCount()}
-                    component="span"
-                    color="primary"
-                    variant="outlined"
-                    startIcon={<UploadFileIcon />}>Upload</Button>
-                </label>
-              </div>
-            </div>
-          </form>
-        )}
-      <Footer />
+      <ProcessHeader />
+      {loading ? (
+        <Loading
+          concerns={Object.keys(concernAreas).filter(
+            (key) => concernAreas[key]
+          )}
+        />
+      ) : (
+        <ProcessForm />
+      )}
     </main>
   );
 };
