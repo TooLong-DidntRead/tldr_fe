@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 
 const Welcome = () => {
-
   return (
     <main className="welcome-main">
       <div className="welcome-card">

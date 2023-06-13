@@ -3,6 +3,7 @@ import { Dispatch, useState } from "react";
 import { ConcernShape } from "../../../interfaces";
 import Loading from "./Loading/Loading";
 import { Form } from "./Form/Form";
+import { ProcessTitle } from "./ProcessTitle";
 
 interface Props {
   tosInput: string;
@@ -25,8 +26,7 @@ const Process = ({tosInput, setTosInput, setConcerns, setError, user}: Props) =>
 
   return (
     <main className="process-main">
-      <h1 className="heading">Terms of Service Processor</h1>
-      <p className="sub-heading">Understand what's important to you.</p>
+      <ProcessTitle />
       {loading ? 
         <Loading concerns={Object.keys(concernAreas).filter(key => concernAreas[key])}/>: 
         <Form 
