@@ -9,6 +9,7 @@ import { FormTitle } from "./FormTitle";
 import { TOSInput } from "./TOSInput";
 import { ConcersSelector } from "./ConcernsSelector";
 import { TOSLibrary } from "./TOSLibrary";
+import { ProcessButton } from "./ProcessButton";
 
 interface Props {
   user: number | null;
@@ -24,26 +25,6 @@ interface Props {
 export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas, setConcerns, setError, setTosInput}: Props) => {
   const [selectedLibrary, setSelectedLibrary] = useState('');
   const history = useHistory();
-  const sendTOS = async () => {
-    try {
-      setLoading(true);
-      const concerns = Object.keys(concernAreas).filter(
-        (key) => concernAreas[key]
-      );
-      const TOSinfo = await processTOS(
-        tosInput.replace('"', "'"),
-        concerns,
-        user
-      );
-      setConcerns(TOSinfo.data);
-      setLoading(false);
-      history.push("/results");
-    } catch (error: any) {
-      const errorMessage: string = error.message;
-      errorMessage ? setError(errorMessage) : setError("unexpected error 🙃");
-      setError(errorMessage);
-    };
-  };
 
   const getConcernCount = () => {
     const keys = Object.keys(concernAreas);
@@ -52,8 +33,6 @@ export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas,
       return acc ;
     }, 0);
   };
-
-
 
   const processPDF = async (file: File) => {
       try {
@@ -78,13 +57,7 @@ export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas,
       <div className="form-footer">
         <TOSLibrary selectedLibrary={selectedLibrary} setSelectedLibrary={setSelectedLibrary} setTosInput={setTosInput}/>
         <div className="buttons-parent">
-          <Button
-            disabled={!(tosInput && getConcernCount())}
-            onClick={sendTOS}
-            color="primary"
-            variant="contained"
-            disableElevation
-            startIcon={<CheckRoundedIcon />}>Process</Button>
+          <ProcessButton concernAreas={concernAreas} setError={setError} setConcerns={setConcerns} setLoading={setLoading} tosInput={tosInput} user={user}/>
           <input
             disabled={!getConcernCount()}
             accept="application/pdf"
