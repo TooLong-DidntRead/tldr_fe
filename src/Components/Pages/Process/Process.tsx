@@ -4,7 +4,7 @@ import { ConcernShape } from "../../../interfaces";
 import Loading from "./Loading/Loading";
 import { Form } from "./Form/Form";
 
-interface FormProps {
+interface Props {
   tosInput: string;
   setTosInput: Dispatch<React.SetStateAction<string>>;
   setConcerns: Dispatch<React.SetStateAction<ConcernShape[] | null>>;
@@ -12,9 +12,8 @@ interface FormProps {
   user: number | null;
 }
 
-const Process = ({tosInput, setTosInput, setConcerns, setError, user}: FormProps) => {
+const Process = ({tosInput, setTosInput, setConcerns, setError, user}: Props) => {
   const [loading, setLoading] = useState(false);
-  
   const [concernAreas, setConcernAreas] = useState<{ [key: string]: boolean }>({
     Privacy: false,
     Security: false,

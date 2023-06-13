@@ -14,10 +14,12 @@ import { useHistory } from "react-router-dom";
 import { ConcernShape } from "../../../../interfaces";
 import processTOS, { processTOSPDF } from "../../../../apicalls";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { tosLibrary } from "../../../../tosLibrary";
+import { FormTitle } from "./FormTitle";
+import { TOSInput } from "./TOSInput";
+import { ConcersSelector } from "./ConcernsSelector";
 
 interface Props {
   user: number | null;
@@ -62,26 +64,6 @@ export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas,
     }, 0);
   };
 
-  const getConcernAreaChecks = () => {
-    const keys = Object.keys(concernAreas);
-    return keys.map((key) => (
-      <FormControlLabel
-        key={key}
-        control={<Checkbox size="small" />}
-        label={key}
-        checked={concernAreas[key]}
-        onChange={(e) =>
-          setConcernAreas({ ...concernAreas, [key]: !concernAreas[key] })
-        }
-      />
-    ));
-  };
-
-  const handleTOSChange = (tos: string) => {
-    setSelectedLibrary('');
-    setTosInput(tos);
-  }
-
   const handleLibraryChange = (event: SelectChangeEvent) => {
     setSelectedLibrary(event.target.value);
     setTosInput(event.target.value);
@@ -104,23 +86,9 @@ export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas,
   }
   return (
     <form className="form-card">
-      <h3 className="form-heading">
-        Paste, upload, or select your Terms of Service from a list of
-        popular services.
-      </h3>
-      <TextField
-        value={tosInput}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          handleTOSChange(event.target.value);
-        }}
-        id="tos"
-        multiline
-        rows={7}
-      />
-      <FormControl sx={{ m: 0 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Select Area(s) of Concern</FormLabel>
-        <FormGroup row>{getConcernAreaChecks()}</FormGroup>
-      </FormControl>
+      <FormTitle />
+      <TOSInput setSelectedLibrary={setSelectedLibrary} setTosInput={setTosInput} tosInput={tosInput}/>
+      <ConcersSelector concernAreas={concernAreas} setConcernAreas={setConcernAreas}/>
       <div className="form-footer">
         <FormControl sx={{ m: 0, minWidth: 160 }} size="small">
           <InputLabel id="tos-library-label">TOS Library</InputLabel>
