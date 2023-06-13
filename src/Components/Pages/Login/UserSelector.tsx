@@ -9,7 +9,8 @@ interface Props {
 }
 
 export const UserSelector = ({userID, setUser, src}: Props) => {
-  let history = useHistory();
+  const history = useHistory();
+  const names = ["Travis Howard", "Cindy Baker", "Remy Sharp"];
 
   const loginUser = (id:number) => {
     history.push("/process");
@@ -25,7 +26,7 @@ export const UserSelector = ({userID, setUser, src}: Props) => {
   return(
     <div className="avatar" >
       <Avatar onClick={() => loginUser(1)} onKeyDown={(event) => handleKeyPress(event, 1)} id="avatar-img" alt="Travis Howard" src={src} tabIndex={0}/>
-      <p className="avatar-name">Travis Howard</p>
+      <p className="avatar-name">{names[userID-1]}</p>
     </div>
   )
 }
