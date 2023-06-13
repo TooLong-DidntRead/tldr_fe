@@ -1,14 +1,3 @@
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
 import { Dispatch, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ConcernShape } from "../../../../interfaces";
@@ -16,10 +5,10 @@ import processTOS, { processTOSPDF } from "../../../../apicalls";
 import Button from "@mui/material/Button";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import { tosLibrary } from "../../../../tosLibrary";
 import { FormTitle } from "./FormTitle";
 import { TOSInput } from "./TOSInput";
 import { ConcersSelector } from "./ConcernsSelector";
+import { TOSLibrary } from "./TOSLibrary";
 
 interface Props {
   user: number | null;
@@ -64,10 +53,7 @@ export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas,
     }, 0);
   };
 
-  const handleLibraryChange = (event: SelectChangeEvent) => {
-    setSelectedLibrary(event.target.value);
-    setTosInput(event.target.value);
-  };
+
 
   const processPDF = async (file: File) => {
       try {
@@ -90,22 +76,7 @@ export const Form = ({user, tosInput, setLoading, concernAreas, setConcernAreas,
       <TOSInput setSelectedLibrary={setSelectedLibrary} setTosInput={setTosInput} tosInput={tosInput}/>
       <ConcersSelector concernAreas={concernAreas} setConcernAreas={setConcernAreas}/>
       <div className="form-footer">
-        <FormControl sx={{ m: 0, minWidth: 160 }} size="small">
-          <InputLabel id="tos-library-label">TOS Library</InputLabel>
-          <Select
-            labelId="tos-library-label"
-            id="tos-library-select"
-            value={selectedLibrary}
-            label="Select TOS"
-            onChange={handleLibraryChange}
-          >
-            {tosLibrary.map((tos) => (
-              <MenuItem key={tos.service} value={tos.tos}>
-                {tos.service}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <TOSLibrary selectedLibrary={selectedLibrary} setSelectedLibrary={setSelectedLibrary} setTosInput={setTosInput}/>
         <div className="buttons-parent">
           <Button
             disabled={!(tosInput && getConcernCount())}
