@@ -1,5 +1,5 @@
 import "./Welcome.css";
-import logo_sm from "../../images/tldr_sm_dark.svg";
+import logo_sm from "../../../images/tldr_sm_dark.svg";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 

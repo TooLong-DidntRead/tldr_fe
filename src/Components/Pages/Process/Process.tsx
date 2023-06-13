@@ -3,9 +3,9 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import processTOS, { processTOSPDF } from "../../apicalls";
+import processTOS, { processTOSPDF } from "../../../apicalls";
 import { Dispatch, useState } from "react";
-import { ConcernShape } from "../../interfaces";
+import { ConcernShape } from "../../../interfaces";
 import { useHistory } from "react-router-dom";
 import {
   Checkbox,
@@ -18,9 +18,9 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { tosLibrary } from "../../tosLibrary";
+import { tosLibrary } from "../../../tosLibrary";
 import Loading from "./Loading/Loading";
-import Footer from "../Footer/Footer";
+import Footer from "../../Layout/Footer/Footer";
 
 interface FormProps {
   tosInput: string;

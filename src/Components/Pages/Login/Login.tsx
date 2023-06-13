@@ -1,8 +1,8 @@
 import React, {KeyboardEvent} from "react";
 import "./Login.css";
-import Avatar1 from "../../images/avatar-1.jpg";
-import Avatar2 from "../../images/avatar-2.jpg";
-import Avatar3 from "../../images/avatar-3.jpg";
+import Avatar1 from "../../../images/avatar-1.jpg";
+import Avatar2 from "../../../images/avatar-2.jpg";
+import Avatar3 from "../../../images/avatar-3.jpg";
 import Avatar from "@mui/material/Avatar";
 import { useHistory } from "react-router-dom";
 

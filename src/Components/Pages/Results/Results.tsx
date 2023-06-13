@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ConcernShape } from "../../interfaces";
+import { ConcernShape } from "../../../interfaces";
 import ConcernRow from "./ConcernRow/ConcernRow";
 import "./Results.css";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -8,7 +8,7 @@ import { Button, Tooltip } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from "react-router-dom";
-import Footer from "../Footer/Footer";
+import Footer from "../../Layout/Footer/Footer";
 
 interface ResultsProps {
   concerns: ConcernShape[];
