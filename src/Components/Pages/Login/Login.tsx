@@ -1,9 +1,9 @@
-import React, {KeyboardEvent} from "react";
-import "./Login.css";
+import React from "react";
 import Avatar1 from "../../../images/avatar-1.jpg";
 import Avatar2 from "../../../images/avatar-2.jpg";
 import Avatar3 from "../../../images/avatar-3.jpg";
 import { UserSelector } from "./UserSelector";
+import "./Login.css";
 
 interface LoginProps {
   setUser: React.Dispatch<React.SetStateAction<number | null>>;
