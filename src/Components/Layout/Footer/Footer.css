@@ -1,0 +1,21 @@
+footer {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.footer-text {
+  color: black;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  footer {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}

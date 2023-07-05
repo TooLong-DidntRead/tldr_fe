@@ -1,13 +1,13 @@
 import { useState } from "react";
-import "./App.css";
-import Header from "../Header/Header";
-import Process from "../Process/Process";
-import Login from "../Login/Login";
-import Results from "../Results/Results";
-import { ConcernShape } from "../../interfaces";
-import Welcome from "../Welcome/Welcome";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { ConcernShape } from "../../interfaces";
+import Process from "../Pages/Process/Process";
+import Login from "../Pages/Login/Login";
+import Results from "../Pages/Results/Results";
+import Welcome from "../Pages/Welcome/Welcome";
 import NotFound from "../NotFound/NotFound";
+import { Layout } from "../Layout/Layout";
+import "./App.css";
 
 const App = () => {
   const [error, setError] = useState<string>("");
@@ -25,50 +25,43 @@ const App = () => {
 
   return (
     <div className="App">
-      {error ? (
-        <NotFound error={error} setError={setError}/>
-      ) : (
-        <Switch>
-          <Route exact path="/">
-            <Welcome />
-          </Route>
-          <Route exact path="/login">
-            <Login setUser={setUser}/>
-          </Route>
-          <Route exact path="/process">
-          {user ? (
-              <>
-                <Header logout={logout} user={user}/>
-                <Process
+      {error ? <NotFound error={error} setError={setError}/> : 
+      <Switch>
+        <Route exact path="/">
+          <Welcome />
+        </Route>
+        <Route exact path="/login">
+          <Login setUser={setUser}/>
+        </Route>
+        <Route exact path="/process">
+          {user ? 
+            <Layout logout={logout} user={user}>
+              <Process
                   tosInput={tosInput}
                   setTosInput={setTosInput}
                   setConcerns={setConcerns}
                   setError={setError}
                   user={user}
                 />
-              </>
-            ) : (
-              <Redirect to={'/login'}/>
-            )}
-          </Route>
-          <Route exact path="/results">
-            {concerns ? (
-              <>
-                <Header logout={logout} user={user} />
-                <Results concerns={concerns} />
-              </>
-            ) : (
-              <Redirect to={'/process'}/>
-            )}
-          </Route>
-          <Route path="/not-found">
-              <NotFound error={error} setError={setError}/>
-          </Route>
-          <Route path="/*">
-            <Redirect to={'/not-found'}/>
-          </Route>
-        </Switch>
-      )}
+            </Layout>:
+            <Redirect to={'/login'}/>
+          }
+        </Route>
+        <Route exact path="/results">
+          {concerns && user ? 
+            <Layout logout={logout} user={user}>
+              <Results concerns={concerns}/>
+            </Layout>:
+            <Redirect to={'/process'}/>
+          }
+        </Route>
+        <Route path="/not-found">
+            <NotFound error={error} setError={setError}/>
+        </Route>
+        <Route path="/*">
+          <Redirect to={'/not-found'}/>
+        </Route>
+      </Switch>}
     </div>
   );
 };
